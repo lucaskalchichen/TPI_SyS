@@ -49,6 +49,36 @@ tokens = (
     'CLOSE_PROGRAMLISTING',
     'OPEN_NOTE',
     'CLOSE_NOTE',
+    'OPEN_FIRSTNAME',
+    'CLOSE_FIRSTNAME',
+    'OPEN_SURNAME',
+    'CLOSE_SURNAME',
+    'OPEN_TEXTO',
+    'CLOSE_TEXTO',
+    'OPEN_STREET',
+    'CLOSE_STREET',
+    'OPEN_PHONE',
+    'CLOSE_PHONE',
+    'OPEN_EMAIL',
+    'CLOSE_EMAIL',
+    'OPEN_YEAR',
+    'CLOSE_YEAR',
+    'OPEN_HOLDER',
+    'CLOSE_HOLDER',
+    'OPEN_EMPHASIS',
+    'CLOSE_EMPHASIS',
+    'OPEN_LINK',
+    'CLOSE_LINK',
+    'OPEN_INFORMALTABLE',
+    'CLOSE_INFORMALTABLE',
+    'OPEN_COMMENT',
+    'CLOSE_COMMENT',
+    'OPEN_SIMPLESEC',
+    'CLOSE_SIMPLESEC',
+    'OPEN_SIMPARA',
+    'CLOSE_SIMPARA',
+    'OPEN_INFO',
+    'CLOSE_INFO',
     'TEXT',
     'URL',
 )
@@ -104,14 +134,19 @@ t_CLOSE_NOTE = r'</note>'
 t_TEXT = r'[^<>]+'
 
 # Expresión regular para URL
+
 def t_URL(t):
     r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
     return t
 
 # Ignorar espacios en blanco y saltos de línea
+
+
 t_ignore = ' \n'
 
 # Función para manejar errores de tokens no válidos
+
+
 def t_error(t):
     if t.value.startswith('<') and t.value.endswith('>'):
         print("Etiqueta no válida: '%s'" % t.value)
