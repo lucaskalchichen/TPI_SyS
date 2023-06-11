@@ -1,4 +1,21 @@
+
+import argparse
+
 import ply.lex as lex
+
+
+# Crear un parser de argumentos
+parser = argparse.ArgumentParser(description='Mi programa')
+
+# Agregar un argumento para el archivo de entrada
+parser.add_argument('archivo', type=str, help='Archivo de entrada')
+
+# Analizar los argumentos de línea de comandos
+args = parser.parse_args()
+
+# Obtener el nombre del archivo de entrada
+archivo = args.archivo
+
 
 # Lista de tokens
 tokens = (
@@ -187,16 +204,8 @@ def t_error(t):
 # Crear el lexer
 lexer = lex.lex()
 
-data = """
-<para>
-    <title>Título del párrafo<itle>
-    Este es un párrafo de ejemplo.
-</para>
-<section>
-    <title>Sección </title>
-    <para>Este es otro párrafo.</para>
-</sectionffg>
-"""
+data = open(archivo).read()
+
 
 # Asignar la cadena de entrada al lexer
 lexer.input(data)
