@@ -73,8 +73,8 @@ def p_title(p):
 # Otras reglas gramaticales y acciones semánticas...
 
 def p_article(p):
-  'article : OPEN_INFO CLOSE_INFO article1'           #algo asi sería(?
-  p[0] = <info></info> p[1]
+    'article : OPEN_INFO info CLOSE_INFO article'
+    p[0] = <info> p[1] </info> p[3]
 
 
 # Manejo de errores
