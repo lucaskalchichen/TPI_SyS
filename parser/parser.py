@@ -21,7 +21,7 @@ def p_article1(p):
     '''
 def p_article2(p):
     '''
-        article2 : OPEN_LISTITEM itemlits CLOSE_LISTITEM article2
+        article2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM article2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
@@ -30,7 +30,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
             |   OPEN_COMMENT comment CLOSE_COMMENT article2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article2
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -39,7 +39,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
             |   OPEN_PARA para CLOSE_PARA article3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3
@@ -85,7 +85,7 @@ def p_section1(p):
 
 def p_section2(p):
     '''
-        section2 : OPEN_LISTITEM itemlits CLOSE_LISTITEM section2
+        section2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM section2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
             |   OPEN_PARA  para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
@@ -94,7 +94,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
             |   OPEN_COMMENT comment CLOSE_COMMENT section2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section2
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -103,7 +103,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3
             |   OPEN_PARA para CLOSE_PARA section3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3
@@ -150,7 +150,7 @@ def p_simplesec1(p):
 
 def p_simplesec2(p):
     '''
-        simplesec2 : OPEN_LISTITEM itemlits CLOSE_LISTITEM simplesec2
+        simplesec2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM simplesec2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT simplesec2
             |   OPEN_PARA  para CLOSE_PARA simplesec2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA simplesec2
@@ -159,7 +159,7 @@ def p_simplesec2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
             |   OPEN_COMMENT comment CLOSE_COMMENT simplesec2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT simplesec2
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -168,8 +168,70 @@ def p_simplesec2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlits CLOSE_LISTITEM
     '''
+
+def p_info(p):
+     '''
+        info : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT info
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT info
+            |   OPEN_ADDREESS address CLOSE_ADDREESS info
+            |   OPEN_AUTHOR author CLOSE_AUTHOR info
+            |   OPEN_DATE date CLOSE_DATE info
+            |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT info
+            |   OPEN_TITLE title CLOSE_TITLE info
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+            |   OPEN_ADDREESS address CLOSE_ADDREESS 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR 
+            |   OPEN_DATE date CLOSE_DATE 
+            |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT 
+            |   OPEN_TITLE title CLOSE_TITLE
+    '''
+
+def p_abstract(p):
+    '''
+        abstract : OPEN_TITLE title CLOSE_TITLE abstract
+            |   abstract2 
+    '''
+
+def p_abstract2(p):
+    '''
+        abstract2 : OPEN_PARA para CLOSE_PARA abstract2
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA abstract2
+            |   OPEN_PARA para CLOSE_PARA 
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA 
+    '''
+
+def p_author(p):
+    '''
+        author : OPEN_FIRSTNAME firstname CLOSE_FIRSTNAME author
+            |   OPEN_SURNAME surname CLOSE_SURNAME author
+            |   OPEN_FIRSTNAME firstname CLOSE_FIRSTNAME 
+            |   OPEN_SURNAME simpara CLOSE_SURNAME
+    '''
+
+def p_address(p):
+
+
+
+def p_copyright(p):
+    '''
+        copyright : OPEN_YEAR year CLOSE_YEAR copyright2 
+            |   OPEN_YEAR year CLOSE_YEAR
+    '''
+
+def p_copyright2(p):
+     '''
+        copyright2 : OPEN_YEAR year CLOSE_YEAR copyright2
+            |   copyright3
+    '''
+
+def p_copyright3(p):
+     '''
+        copyright3 : OPEN_HOLDER holder CLOSE_HOLDER copyright3
+            |   OPEN_HOLDER holder CLOSE_HOLDER
+    '''
+
 
 
 def p_title(p):
