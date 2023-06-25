@@ -243,54 +243,11 @@ def p_title(p):
             |   OPEN_EMAIL email CLOSE_EMAIL
 
     '''
-def p_simpara(p):
-    '''
-        simpara : OPEN_TEXT text CLOSE_TEXT simpara
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS simpara
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL simpara
-            |   OPEN_AUTHOR author CLOSE_AUTHOR simpara
-            |   OPEN_COMMENT comment CLOSE_COMMENT simpara
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR 
-            |   OPEN_COMMENT comment CLOSE_COMMENT
 
-    '''
-def p_emphasis(p):
-    '''
-        emphasis : OPEN_TEXT text CLOSE_TEXT emphasis
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS emphasis
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL emphasis
-            |   OPEN_AUTHOR author CLOSE_AUTHOR emphasis
-            |   OPEN_COMMENT comment CLOSE_COMMENT emphasis
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR 
-            |   OPEN_COMMENT comment CLOSE_COMMENT
 
-    '''
-def p_comment(p):
-    '''
-        comment : OPEN_TEXT text CLOSE_TEXT comment
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS comment
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL comment
-            |   OPEN_AUTHOR author CLOSE_AUTHOR comment
-            |   OPEN_COMMENT comment CLOSE_COMMENT comment
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   #falta link aca
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR 
-            |   OPEN_COMMENT comment CLOSE_COMMENT
 
-    '''
+
+
 
 def p_important(p):
      '''
