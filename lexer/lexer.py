@@ -86,6 +86,7 @@ tokens = (
     'CLOSE_EMPHASIS',
     'OPEN_LINK',
     'CLOSE_LINK',
+    'XLINK_ATTRIBUTE',
     'OPEN_INFORMALTABLE',
     'CLOSE_INFORMALTABLE',
     'OPEN_COMMENT',
@@ -168,6 +169,7 @@ t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
 t_OPEN_LINK = r'<link>'
 t_CLOSE_LINK = r'</link>'
+t_XLINK_ATTRIBUTE = r'xlink:href'
 t_OPEN_INFORMALTABLE = r'<informaltable>'
 t_CLOSE_INFORMALTABLE = r'</informaltable>'
 t_OPEN_COMMENT = r'<comment>'
