@@ -393,6 +393,44 @@ def p_link(p):
     '''
     link : OPEN_LINK XLINK_ATTRIBUTE '=' URL CLOSE_LINK TEXT OPEN_LINK CLOSE_LINK
     '''
+def p_mediaobject(p):
+     '''
+        mediaobject : OPEN_INFO info CLOSE_INFO mediadata
+            |   mediadata
+    '''
+def p_mediadata(p):
+     '''
+        mediadata : videoobject mediadata2
+            |  imageobject mediadata3
+    '''
+def p_mediadata2(p):
+     '''
+        mediadata2 : videoobject mediadata2
+            |   imageobject mediadata2
+    '''
+def p_mediadata3(p):
+     '''
+        mediadata3 : videoobject mediadata3
+            |   imageobject mediadata3
+    '''
+def p_videoobject(p):
+    '''
+        videoobject : OPEN_INFO info CLOSE_INFO videoobject2
+            |   videoobject2
+    '''
+def p_imageobject(p):
+    '''
+        imageobject : OPEN_INFO info CLOSE_INFO imageobject2
+            |   imageobject2
+    '''
+def p_videoobject2(p):
+    '''
+        videoobject2 : OPEN_TEXT text CLOSE_TEXT
+    '''
+def p_imageobject2(p):
+    '''
+        imageobject2 : OPEN_TEXT text CLOSE_TEXT
+    '''
 
 
 # Manejo de errores
