@@ -99,6 +99,12 @@ tokens = (
     'CLOSE_INFO',
     'TEXT',
     'URL',
+    'OPEN_VIDEOOBJECT',
+    'CLOSE_VIDEOOBJECT',
+    'OPEN_IMAGENOBJECT',
+    'CLOSE_IMAGENOBJECT',
+    'IMAGENDATA',
+    'VIDEODATA',
 )
 
 # Definición de patrones para los tokens
@@ -167,9 +173,7 @@ t_OPEN_HOLDER = r'<holder>'
 t_CLOSE_HOLDER = r'</holder>'
 t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
-t_OPEN_LINK = r'<link>'
 t_CLOSE_LINK = r'</link>'
-t_XLINK_ATTRIBUTE = r'xlink:href'
 t_OPEN_INFORMALTABLE = r'<informaltable>'
 t_CLOSE_INFORMALTABLE = r'</informaltable>'
 t_OPEN_COMMENT = r'<comment>'
@@ -181,8 +185,24 @@ t_CLOSE_SIMPARA = r'</simpara>'
 t_OPEN_INFO = r'<info>'
 t_CLOSE_INFO = r'</info>'
 t_TEXT = r'[^<>]+'
+t_OPEN_IMAGENOBJECT =r'<imageobject>'
+t_CLOSE_IMAGENOBJECT =r'</imageobject>'
+t_OPEN_VIDEOOBJECT =r'<videoobject>'
+t_CLOSE_VIDEOOBJECT =r'</videoobject>'
 
-# Expresión regular para URL
+def t_VIDEODATA(t):
+    r'<videodata fileref='+ url +'/>
+    return t
+
+# Expresión regular para mediadata
+def t_IMAGENDATA(t):
+    r'<imagedata fileref='+url+'/>
+    return t
+
+def t_OPEN_LINK(t):
+    r'<link xlink:href=' + url + r'>'
+    # Realizar acciones semánticas relacionadas con el token OPEN_LINK
+    return t
 
 def t_URL(t):
     r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
