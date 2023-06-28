@@ -443,3 +443,38 @@ def p_error(p):
         print("Error de sintaxis en el token '%s'" % p.value)
     else:
         print("Error de sintaxis en la entrada")
+
+#Ejecutar parser, CORREGIR
+
+ctrl = input("Presione (1) para ingresar la dirección del archivo txt o (2) para ingresar por teclado: ")
+if ctrl == "1":
+    direccion = input("Ingrese la dirección del archivo txt: ")
+    file = open(direccion, "r")
+    data = file.read()
+    print("Se cargó el archivo:", data)
+elif ctrl == "2":
+    data = input("Ingrese la cadena que desea comprobar: ")
+    print("La cadena escrita es:", data)
+
+lexer = lex.lexer()
+lexer.input(data)
+error = False
+
+while True:
+    tok = lexer.token()
+    print(tok)
+    if tok is None:
+        break
+    elif tok.value == "true":
+        error = True
+
+if error:
+    print("El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
+else:
+    print("¡Lenguaje escrito correctamente!")
+
+parser = yacc.yacc()
+result = parser.parse(data)
+        
+        
+                
