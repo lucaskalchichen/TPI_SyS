@@ -28,7 +28,7 @@ def p_article2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS article2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT article2
+            |   OPEN_COMMENT comment CLOSE_COMMENT article2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article2
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
@@ -37,7 +37,7 @@ def p_article2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+            |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
@@ -46,7 +46,7 @@ def p_article2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS article3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3
+            |   OPEN_COMMENT comment CLOSE_COMMENT article3
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3
     '''
 
@@ -92,7 +92,7 @@ def p_section2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS section2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT section2
+            |   OPEN_COMMENT comment CLOSE_COMMENT section2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section2
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
@@ -101,7 +101,7 @@ def p_section2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+            |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3
@@ -110,7 +110,7 @@ def p_section2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS section3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT section3
+            |   OPEN_COMMENT comment CLOSE_COMMENT section3
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3
     '''
 
@@ -157,7 +157,7 @@ def p_simplesec2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS simplesec2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT simplesec2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT simplesec2
+            |   OPEN_COMMENT comment CLOSE_COMMENT simplesec2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT simplesec2
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
@@ -166,7 +166,7 @@ def p_simplesec2(p):
             |   OPEN_ADDREESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+            |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
 
@@ -211,8 +211,18 @@ def p_author(p):
     '''
 
 def p_address(p):
+    '''
+        address : text address
+            |   OPEN_STREET street CLOSE_STREET address
+            |   OPEN_CITY city CLOSE_CITY address
+            |   OPEN_STATE state CLOSE_STATE address
+            |   OPEN_PHONE phone CLOSE_PHONE address
+            |   OPEN_EMAIL email CLOSE_EMAIL address
+            |   empy
+    '''
 
-
+def p_empt(p):
+    pass
 
 def p_copyright(p):
     '''
@@ -233,19 +243,15 @@ def p_copyright3(p):
     '''
 def p_title(p):
    '''
-        title : OPEN_TEXT text CLOSE_TEXT title
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS title
-            |   link
+        title : text title
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS title
+            |   OPEN_LINK link CLOSE_LINK
             |   OPEN_EMAIL email CLOSE_EMAIL title
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   link
+            |   text
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_LINK link CLOSE_LINK
             |   OPEN_EMAIL email CLOSE_EMAIL
-
     '''
-
-
-
 
 
 
@@ -265,7 +271,7 @@ def p_important2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS important2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT important2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE important2
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT important2
+            |   OPEN_COMMENT comment CLOSE_COMMENT important2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT important2
             |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
@@ -274,125 +280,213 @@ def p_important2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+            |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
 
     '''
 def p_firstname(p):
     '''
-        firstname : OPEN_TEXT text CLOSE_TEXT firstname
-            |   link firstname
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS firstname
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT firstname
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        firstname : text firstname
+            |   OPEN_LINK link CLOSE_LINK firstname
+            |   OPEN_EMPHASIS enphasis CLOSE_EMPHASIS firstname
+            |   OPEN_COMMENT comment CLOSE_COMMENT firstname
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_surname(p):
     '''
-        surname : OPEN_TEXT text CLOSE_TEXT surname
-            |   link surname
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS surname
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT surname
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        surname : text surname
+            |   OPEN_LINK link CLOSE_LINK surname
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS surname
+            |   OPEN_COMMENT comment CLOSE_COMMENT surname
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_street(p):
      '''
-        street : OPEN_TEXT text CLOSE_TEXT street
-            |   link street
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS street
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT street
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        street : text street
+            |   OPEN_LINK link CLOSE_LINK street
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS street
+            |   OPEN_COMMENT comment CLOSE_COMMENT street
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_city(p):
     '''
-        city : OPEN_TEXT text CLOSE_TEXT city
-            |   link city
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS city
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT city
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        city : text city
+            |   OPEN_LINK link CLOSE_LINK city
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS city
+            |   OPEN_COMMENT comment CLOSE_COMMENT city
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_state(p):
     '''
-        state : OPEN_TEXT text CLOSE_TEXT state
-            |   link state
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS state
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT state
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        state : text state
+            |   OPEN_LINK link CLOSE_LINK state
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS state
+            |   OPEN_COMMENT comment CLOSE_COMMENT state
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_phone(p):
      '''
-        phone : OPEN_TEXT text CLOSE_TEXT phone
-            |   link phone
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS phone
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT phone
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        phone : text phone
+            |   OPEN_LINK link CLOSE_LINK phone
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS phone
+            |   OPEN_COMMENT comment CLOSE_COMMENT phone
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_email(p):
     '''
-        email : OPEN_TEXT text CLOSE_TEXT email
-            |   link email
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS email
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT email
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        email : text email
+            |   OPEN_LINK link CLOSE_LINK email
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS email
+            |   OPEN_COMMENT comment CLOSE_COMMENT email
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_date(p):
     '''
-        date : OPEN_TEXT text CLOSE_TEXT date
-            |   link date
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS date
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT date
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        date : text date
+            |   OPEN_LINK link CLOSE_LINK date
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS date
+            |   OPEN_COMMENT comment CLOSE_COMMENT date
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_year(p):
      '''
-        year : OPEN_TEXT text CLOSE_TEXT year
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS year
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT year
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        year : text year
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS year
+            |   OPEN_COMMENT comment CLOSE_COMMENT year
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_holder(p):
     '''
-        holder : OPEN_TEXT text CLOSE_TEXT holder
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS holder
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT holder
-            |   OPEN_TEXT text CLOSE_TEXT
-            |   link
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT
+        holder : text holder
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS holder
+            |   OPEN_COMMENT comment CLOSE_COMMENT holder
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 
 def p_link(p):
     '''
-    link : OPEN_LINK TEXT CLOSE_LINK
+    link : text link
+            |   OPEN_LINK link CLOSE_LINK link
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS link
+            |   OPEN_EMAIL email CLOSE_EMAIL link
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  link
+            |   OPEN_COMMENT comment CLOSE_COMMENT link
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
     '''
+
+def p_emphasis(p):
+    '''
+    emphasis : text emphasis
+            |   OPEN_LINK link CLOSE_LINK emphasis
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS emphasis
+            |   OPEN_EMAIL email CLOSE_EMAIL emphasis
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  emphasis
+            |   OPEN_COMMENT comment CLOSE_COMMENT emphasis
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_comment(p):
+    '''
+    comment : text comment
+            |   OPEN_LINK link CLOSE_LINK comment
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS comment
+            |   OPEN_EMAIL email CLOSE_EMAIL comment
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  comment
+            |   OPEN_COMMENT comment CLOSE_COMMENT comment
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_simpara(p):
+    '''
+    simpara : text simpara
+            |   OPEN_LINK link CLOSE_LINK simpara
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS simpara
+            |   OPEN_EMAIL email CLOSE_EMAIL simpara
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  simpara
+            |   OPEN_COMMENT comment CLOSE_COMMENT simpara
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def para(p):
+    '''
+            para : text para
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS para
+            |   OPEN_LINK link CLOSE_LINK para
+            |   OPEN_EMAIL email CLOSE_EMAIL para
+            |   OPEN_AUTHOR author CLOSE_AUTHOR para
+            |   OPEN_COMMENT comment CLOSE_COMMENT para
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
+            |   OPEN_ADDRESS address CLOSE_ADDRESS para
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE para
+            |   text
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_LINK link CLOSE_LINK 
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR 
+            |   OPEN_COMMENT comment CLOSE_COMMENT 
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+        
+    '''
+
+
 def p_mediaobject(p):
      '''
         mediaobject : OPEN_INFO info CLOSE_INFO mediadata
@@ -430,6 +524,131 @@ def p_videoobject2(p):
 def p_imageobject2(p):
     '''
         imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
+    '''
+
+def p_informaltable(p):
+    """
+    informaltable :tableobject
+        | tablegroup
+    """
+
+def p_tableobject(p):
+    '''
+    tableobject : mediaobject tableobject
+        | mediaobject
+    '''
+
+def p_tablegroup(p):
+    '''
+    tablegroup : tgroup tablegroup
+        | tgroup
+    '''
+
+def p_tgroup(p):
+    '''
+    tgroup : thead tgroup1
+        | tgroup1
+    '''
+
+def p_tgroup1(p):
+    '''
+    tgroup1 : tgroup2
+    '''
+
+def p_tgroup2(p):
+    '''
+    tgroup2 : tfoot tgroup3
+    | tgroup3
+    '''
+
+def p_tgroup3(p):
+    '''
+    tgroup3 : tbody
+    '''
+
+def p_thead(p):
+    '''
+    thead : bloque
+    '''
+
+def p_tfoot(p):
+    '''
+    tfoot : bloque
+    '''
+
+
+def p_tbody(p):
+    '''
+    tbody : bloque
+    '''
+
+def p_bloque(p):
+    '''
+    bloque :row bloque
+        |row
+    '''
+
+def p_row(p):
+    '''
+    row : entry row
+        | entrytbl row
+        | entry
+        | entrytbl
+    '''
+
+def p_entrybl1(p):
+    '''
+    entrytbl : thead entrytbl1
+        | entrytbl1
+        | tbody
+    '''
+
+def p_entry(p):
+    """
+        entry : text entry
+            | CLOSE_ITEMIZEDLIST temizedList  CLOSE_ITEMIZEDLIST entry
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
+            | OPEN_PARA para CLOSE_PARA entry
+            | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
+            | OPEN_MEDIAOBJECT comment CLOSE_COMMENT entry
+            | OPEN_COMMENT comment CLOSE_COMMENTENTRY
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
+            | text
+            | CLOSE_ITEMIZEDLIST temizedList CLOSE_ITEMIZEDLIST 
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            | OPEN_PARA para CLOSE_PARA 
+            | OPEN_SIMPARA simpara CLOSE_SIMPARA
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_COMMENT 
+            | OPEN_COMMENT comment CLOSE_COMMENT
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+    """
+
+def p_itemzedlist(p):
+    '''
+    itemzedlist: listitem itemzedlist
+        |   listitem 
+    '''
+
+def p_listem(p):
+    '''
+    listitem:   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
+        |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
+        |   OPEN_PARA para CLOSE_PARAlistitem
+        |   OPEN_SIMPARA simpara CLOSE_SIMPARAlistitem
+        |   OPEN_ADDRESS address CLOSE_ADDRESS listitem
+        |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT listitem
+        |   OPEN_INFORMALTABLE informaltalbe CLOSE_INFORMALTABLE listitem
+        |   OPEN_COMMENT comment CLOSE_COMMENT listitem
+        |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT listitem  
+        |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
+        |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
+        |   OPEN_PARA para CLOSE_PARA
+        |   OPEN_SIMPARA simpara CLOSE_SIMPARA
+        |   OPEN_ADDRESS address CLOSE_ADDRESS 
+        |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+        |   OPEN_INFORMALTABLE informaltalbe CLOSE_INFORMALTABLE 
+        |   OPEN_COMMENT comment CLOSE_COMMENT 
+        |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
 
 def p_text(p):
