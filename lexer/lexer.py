@@ -4,17 +4,7 @@ import argparse
 import ply.lex as lex
 
 
-# Crear un parser de argumentos
-parser = argparse.ArgumentParser(description='Mi programa')
 
-# Agregar un argumento para el archivo de entrada
-parser.add_argument('archivo', type=str, help='Archivo de entrada')
-
-# Analizar los argumentos de línea de comandos
-args = parser.parse_args()
-
-# Obtener el nombre del archivo de entrada
-archivo = args.archivo
 
 
 # Lista de tokens
@@ -108,7 +98,7 @@ tokens = (
 )
 
 # Definición de patrones para los tokens
-t_DOCTYPE_ARTICLE = r'<!DOCTYPE article>'
+t_DOCTYPE_ARTICLE = r'<DOCTYPE article>'
 t_OPEN_ARTICLE = r'<article>'
 t_CLOSE_ARTICLE = r'</article>'
 t_OPEN_BOOK = r'<book>'
@@ -173,6 +163,7 @@ t_OPEN_HOLDER = r'<holder>'
 t_CLOSE_HOLDER = r'</holder>'
 t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
+#t_OPEN_LINK = r'<link>'
 t_CLOSE_LINK = r'</link>'
 t_OPEN_INFORMALTABLE = r'<informaltable>'
 t_CLOSE_INFORMALTABLE = r'</informaltable>'
@@ -191,24 +182,25 @@ t_OPEN_VIDEOOBJECT =r'<videoobject>'
 t_CLOSE_VIDEOOBJECT =r'</videoobject>'
 
 def t_VIDEODATA(t):
-    r'<videodata fileref="'+ url +'"/>'
+    t.value = t.lexer.lexmatch.group('URL')
     return t
+t_VIDEODATA.__doc__ = r'<videodata\s+fileref="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
 
-# Expresión regular para mediadata
 def t_IMAGENDATA(t):
-    r'<imagedata fileref="'+ url + '"/>'
+    t.value = t.lexer.lexmatch.group('URL')
     return t
+t_IMAGENDATA.__doc__ = r'<imagedata\s+fileref="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
 
 def t_OPEN_LINK(t):
-    r'<link xlink:href="' + url + '">'
-    # Realizar acciones semánticas relacionadas con el token OPEN_LINK
+    t.value = t.lexer.lexmatch.group('URL')
     return t
+t_OPEN_LINK.__doc__ = r'<openlink\s+url="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
 
-def t_URL(t):
-    r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
-    return t
+def t_URL(p):
+   r'https?://[^\s<>"]+'
+   return t
 
-# Ignorar espacios en blanco y saltos de línea
+# Ignorar espacios en blanco y saltos de línea, r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
 
 
 t_ignore = ' \n'
@@ -226,7 +218,27 @@ def t_error(t):
 # Crear el lexer
 lexer = lex.lex()
 
-data = open(archivo).read()
+data = '''
+<DOCTYPE article>
+    <article>
+        <info>
+            <title>El titulo del articulo</title>
+            <author>
+                <firstname>Juan</firstname>
+                <surname>Perez</surname>
+            </author>
+        </info>
+        <section>
+            <title>Titulo para la seccion 1</title>
+            <para>
+                Esto es un parrafo
+            </para>
+            <para>
+                Otro parrafo.
+            </para>
+        </section>
+    </article>
+'''
 
 
 # Asignar la cadena de entrada al lexer
