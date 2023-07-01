@@ -11,7 +11,7 @@ def doctype(p):
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
-            |   aticle1
+            |   article1
     '''
 
 def p_article1(p):
