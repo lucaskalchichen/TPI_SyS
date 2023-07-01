@@ -211,6 +211,15 @@ def p_author(p):
     '''
 
 def p_address(p):
+    '''
+        address : text address
+            |   OPEN_STREET street CLOSE_STREET address
+            |   OPEN_CITY city CLOSE_CITY address
+            |   OPEN_STATE state CLOSE_STATE address
+            |   OPEN_PHONE phone CLOSE_PHONE address
+            |   OPEN_EMAIL email CLOSE_EMAIL address
+            |   empy
+    '''
 
 
 
