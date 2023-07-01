@@ -39,35 +39,35 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3
-            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
-            |   OPEN_PARA para CLOSE_PARA article3
-            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3
-            |   OPEN_ADDRESS address CLOSE_ADDRESS article3
-            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3
-            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3
-            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3section
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3section
+            |   OPEN_PARA para CLOSE_PARA article3section
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3section
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3section
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3section
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3section
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3simsection
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
+            |   OPEN_PARA para CLOSE_PARA article3simsection
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3simsection
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3simsection
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3simsection
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3simsection
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3simsection
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3simsection
     '''
 
-def p_article3(p):
-    '''
-        article3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
-        |   OPEN_SECTION section CLOSE_SECTION
-
-        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
-        | OPEN_SECTION section CLOSE_SECTION article3section
-    
-    '''
 def p_article3section(p):
     '''
-    article3section:    OPEN_SECTION section CLOSE_SECTION article3section
-    | OPEN_SECTION  section CLOSE_SECTION
+        article3section :  OPEN_SECTION section CLOSE_SECTION article3section
+        |   OPEN_SECTION section CLOSE_SECTION
     '''
-def p_article3(p):
+def p_article3simsection(p):
     '''
-    article3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
-        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
+    article3simsection: OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
+    | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
     '''
 
 def p_section(p):
