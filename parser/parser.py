@@ -254,7 +254,48 @@ def p_title(p):
             |   OPEN_EMAIL email CLOSE_EMAIL
 
     '''
+def p_simpara(p):
+    '''
+    simpara : text simpara
+            |   OPEN_LINK link CLOSE_LINK simpara
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS simpara
+            |   OPEN_EMAIL email CLOSE_EMAIL simpara
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  simpara
+            |   OPEN_COMMENT comment CLOSE_COMMENT simpara
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
 
+def para(p):
+    '''
+            para : text para
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS para
+            |   OPEN_LINK link CLOSE_LINK para
+            |   OPEN_EMAIL email CLOSE_EMAIL para
+            |   OPEN_AUTHOR author CLOSE_AUTHOR para
+            |   OPEN_COMMENT comment CLOSE_COMMENT para
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
+            |   OPEN_ADDRESS address CLOSE_ADDRESS para
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE para
+            |   text
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_LINK link CLOSE_LINK 
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR 
+            |   OPEN_COMMENT comment CLOSE_COMMENT 
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+        
+    '''
 
 
 
