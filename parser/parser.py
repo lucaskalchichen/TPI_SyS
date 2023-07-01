@@ -231,21 +231,17 @@ def p_address(p):
 
 def p_copyright(p):
     '''
-        copyright : OPEN_YEAR year CLOSE_YEAR copyright2 
+        copyright : OPEN_YEAR year CLOSE_YEAR copyright
             |   OPEN_YEAR year CLOSE_YEAR
+            |   OPEN_YEAR year CLOSE_YEAR copyright2
     '''
 
 def p_copyright2(p):
      '''
-        copyright2 : OPEN_YEAR year CLOSE_YEAR copyright2
-            |   copyright3
-    '''
-
-def p_copyright3(p):
-     '''
-        copyright3 : OPEN_HOLDER holder CLOSE_HOLDER copyright3
+        copyright2 : OPEN_HOLDER holder CLOSE_HOLDER copyright2
             |   OPEN_HOLDER holder CLOSE_HOLDER
     '''
+
 def p_title(p):
    '''
         title : OPEN_TEXT text CLOSE_TEXT title
