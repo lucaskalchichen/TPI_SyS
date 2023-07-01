@@ -190,7 +190,7 @@ def p_info(p):
 
 def p_abstract(p):
     '''
-        abstract : OPEN_TITLE title CLOSE_TITLE abstract
+        abstract : OPEN_TITLE title CLOSE_TITLE abstract2
             |   abstract2 
     '''
 
