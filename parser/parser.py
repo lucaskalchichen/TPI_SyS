@@ -246,7 +246,7 @@ def p_title(p):
    '''
         title : OPEN_TEXT text CLOSE_TEXT title
             |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS title
-            |   link
+            |   link title
             |   OPEN_EMAIL email CLOSE_EMAIL title
             |   OPEN_TEXT text CLOSE_TEXT
             |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS
