@@ -52,35 +52,35 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3
-            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
-            |   OPEN_PARA para CLOSE_PARA article3
-            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3
-            |   OPEN_ADDRESS address CLOSE_ADDRESS article3
-            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3
-            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3
-            |   OPEN_COMMENT comment CLOSE_COMMENT article3
-            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3section
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3section
+            |   OPEN_PARA para CLOSE_PARA article3section
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3section
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3section
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3section
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3section
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3simsection
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
+            |   OPEN_PARA para CLOSE_PARA article3simsection
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3simsection
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3simsection
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3simsection
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3simsection
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3simsection
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3simsection
     '''
 
-def p_article3(p):
-    '''
-        article3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
-        |   OPEN_SECTION section CLOSE_SECTION
-
-        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
-        | OPEN_SECTION section CLOSE_SECTION article3section
-    
-    '''
 def p_article3section(p):
     '''
-    article3section:    OPEN_SECTION section CLOSE_SECTION article3section
-    | OPEN_SECTION  section CLOSE_SECTION
+        article3section :  OPEN_SECTION section CLOSE_SECTION article3section
+        |   OPEN_SECTION section CLOSE_SECTION
     '''
-def p_article3(p):
+def p_article3simsection(p):
     '''
-    article3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
-        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
+    article3simsection: OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
+    | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
     '''
 
 def p_section(p):
@@ -116,36 +116,36 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3
-            |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3
-            |   OPEN_PARA para CLOSE_PARA section3
-            |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3
-            |   OPEN_ADDRESS address CLOSE_ADDRESS section3
-            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3
-            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3
-            |   OPEN_COMMENT comment CLOSE_COMMENT section3
-            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3
-    '''
-
-def p_section3(p):
-    '''
-    section3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT
-        |   OPEN_SECTION section CLOSE_SECTION
-
-        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
-        | OPEN_SECTION section CLOSE_SECTION section3section
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3section
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3section
+            |   OPEN_PARA para CLOSE_PARA section3section
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3section
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section3section
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3section
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3section
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT section3section
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3section
+            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3simsection
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3simsection
+            |   OPEN_PARA para CLOSE_PARA section3simsection
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3simsection
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section3simsection
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3simsection
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3simsection
+            |   OPEN_COMMENT TEXT CLOSE_COMMENT section3simsection
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3simsection
     '''
 
 def p_section3section(p):
     '''
-    section3section: OPEN_SECTION section CLOSE_SECTION section3section
-    | OPEN_SECTION  section CLOUSE_SECTION
+    section3section :  OPEN_SECTION section CLOSE_SECTION section3section
+        |   OPEN_SECTION section CLOSE_SECTION
     '''
 
-def p_section3simsect(p):
+def p_section3simsection(p):
     '''
-    section3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
-        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT
+    section3simsection: OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
+        | OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC
     '''
 
 def p_simplesec(p):
@@ -263,15 +263,109 @@ def p_copyright2(p):
 
 def p_title(p):
    '''
-        title : text title
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS title
-            |   OPEN_LINK link CLOSE_LINK
+        title : OPEN_TEXT text CLOSE_TEXT title
+            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS title
+            |   link title
             |   OPEN_EMAIL email CLOSE_EMAIL title
             |   text
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
             |   OPEN_LINK link CLOSE_LINK
             |   OPEN_EMAIL email CLOSE_EMAIL
+
     '''
+    
+def p_simpara(p):
+    '''
+    simpara : text simpara
+            |   OPEN_LINK link CLOSE_LINK simpara
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS simpara
+            |   OPEN_EMAIL email CLOSE_EMAIL simpara
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  simpara
+            |   OPEN_COMMENT comment CLOSE_COMMENT simpara
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+
+def p_link(p):
+    '''
+    link : text link
+            |   OPEN_LINK link CLOSE_LINK link
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS link
+            |   OPEN_EMAIL email CLOSE_EMAIL link
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  link
+            |   OPEN_COMMENT comment CLOSE_COMMENT link
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_emphasis(p):
+    '''
+    emphasis : text emphasis
+            |   OPEN_LINK link CLOSE_LINK emphasis
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS emphasis
+            |   OPEN_EMAIL email CLOSE_EMAIL emphasis
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  emphasis
+            |   OPEN_COMMENT comment CLOSE_COMMENT emphasis
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_comment(p):
+    '''
+    comment : text comment
+            |   OPEN_LINK link CLOSE_LINK comment
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS comment
+            |   OPEN_EMAIL email CLOSE_EMAIL comment
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  comment
+            |   OPEN_COMMENT comment CLOSE_COMMENT comment
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+def para(p):
+    '''
+            para : text para
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS para
+            |   OPEN_LINK link CLOSE_LINK para
+            |   OPEN_EMAIL email CLOSE_EMAIL para
+            |   OPEN_AUTHOR author CLOSE_AUTHOR para
+            |   OPEN_COMMENT comment CLOSE_COMMENT para
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
+            |   OPEN_ADDRESS address CLOSE_ADDRESS para
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE para
+            |   text
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_LINK link CLOSE_LINK 
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR 
+            |   OPEN_COMMENT comment CLOSE_COMMENT 
+            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+        
+    '''
+
+
 
 
 
