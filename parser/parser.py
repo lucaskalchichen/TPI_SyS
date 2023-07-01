@@ -254,6 +254,7 @@ def p_title(p):
             |   OPEN_EMAIL email CLOSE_EMAIL
 
     '''
+    
 def p_simpara(p):
     '''
     simpara : text simpara
@@ -270,6 +271,54 @@ def p_simpara(p):
             |   OPEN_AUTHOR author CLOSE_AUTHOR  
     '''
 
+
+def p_link(p):
+    '''
+    link : text link
+            |   OPEN_LINK link CLOSE_LINK link
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS link
+            |   OPEN_EMAIL email CLOSE_EMAIL link
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  link
+            |   OPEN_COMMENT comment CLOSE_COMMENT link
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_emphasis(p):
+    '''
+    emphasis : text emphasis
+            |   OPEN_LINK link CLOSE_LINK emphasis
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS emphasis
+            |   OPEN_EMAIL email CLOSE_EMAIL emphasis
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  emphasis
+            |   OPEN_COMMENT comment CLOSE_COMMENT emphasis
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
+
+def p_comment(p):
+    '''
+    comment : text comment
+            |   OPEN_LINK link CLOSE_LINK comment
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS comment
+            |   OPEN_EMAIL email CLOSE_EMAIL comment
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  comment
+            |   OPEN_COMMENT comment CLOSE_COMMENT comment
+            |   text
+            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    '''
 def para(p):
     '''
             para : text para
