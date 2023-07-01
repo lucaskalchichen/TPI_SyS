@@ -484,6 +484,51 @@ else:
 
 parser = yacc.yacc()
 result = parser.parse(data)
+
+ """
+/Formato DockType
+            with open("archivo.html","a") as file:
+                file.write("<!DOCKTYPE html>\n".format(text))
         
+        //Formato Title Principal
+             with open("archivo.html","a") as file:
+                file.write("<H1></H1>\n".format(text))
+        
+        //Formato Titulo en Secciones 
+             with open("archivo.html","a") as file:
+                file.write("<H2></H2>\n".format(text))
+        
+        //Formato adentro de Info
+            
+        
+        //Formato adentro etiqueta Important
+        
+        //Transformacion Etiqueta Para o SimPara
+             with open("archivo.html","a") as file:
+                file.write("<p></p>\n".format(text))
+        
+        //Transformacion Etiqueta Link
+             with open("archivo.html","a") as file:
+                file.write("<></>\n".format(text))
+        
+        //Transformación Tabla
+            //transformacion thead
+                with open("archivo.html","a") as file:
+                file.write("<th></th>\n".format(text))
+            
+            //transformacion tfoot
+                with open("archivo.html","a") as file:
+                file.write("<td></td>\n".format(text))
+            //transformacion tbody
+                with open("archivo.html","a") as file:
+                file.write("<tr></tr>\n".format(text))
+        
+        //Transformación Itemized List
+             with open("archivo.html","a") as file:
+                file.write("<ul></ul>\n".format(text))
+         //Transformación List Item
+             with open("archivo.html","a") as file:
+                file.write("<ul></ul>\n".format(text))
+ """
         
                 
