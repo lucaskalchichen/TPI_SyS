@@ -24,7 +24,7 @@ def doctype(p):
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
-            |   aticle1
+            |   article1
     '''
     archivo_html.write('''<article>{}</article>''')
 def p_article1(p):
@@ -38,7 +38,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS article2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
             |   OPEN_COMMENT comment CLOSE_COMMENT article2
@@ -47,7 +47,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
@@ -56,7 +56,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
             |   OPEN_PARA para CLOSE_PARA article3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3
-            |   OPEN_ADDREESS address CLOSE_ADDRESS article3
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3
             |   OPEN_COMMENT comment CLOSE_COMMENT article3
@@ -65,22 +65,22 @@ def p_article2(p):
 
 def p_article3(p):
     '''
-        article3 :  OPEN_SIMSECT simsect CLOUSE_SIMPLESECT 
-        |   OPEN_SECTION section CLOUSE_SECTION
+        article3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
+        |   OPEN_SECTION section CLOSE_SECTION
 
-        | OPEN_SIMSECT CLOUSE_SIMPLESECT article3simsect
-        | OPEN_SECTION section CLOUSE_SECTION article3section
+        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
+        | OPEN_SECTION section CLOSE_SECTION article3section
     
     '''
 def p_article3section(p):
     '''
-    article3section:    OPEN_SECTION section CLOUSE_SECTION article3section
-    | OPEN_SECTION  section CLOUSE_SECTION
+    article3section:    OPEN_SECTION section CLOSE_SECTION article3section
+    | OPEN_SECTION  section CLOSE_SECTION
     '''
 def p_article3(p):
     '''
-    article3simsect : OPEN_SIMSECT simsect CLOUSE_SIMPLESECT article3simsect
-        |   OPEN_SIMSECT simsect CLOUSE_SIMPLESECT 
+    article3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
+        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
     '''
 
 def p_section(p):
@@ -102,7 +102,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
             |   OPEN_PARA  para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS section2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
             |   OPEN_COMMENT comment CLOSE_COMMENT section2
@@ -111,7 +111,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
@@ -120,7 +120,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3
             |   OPEN_PARA para CLOSE_PARA section3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3
-            |   OPEN_ADDREESS address CLOSE_ADDRESS section3
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3
             |   OPEN_COMMENT comment CLOSE_COMMENT section3
@@ -129,23 +129,23 @@ def p_section2(p):
 
 def p_section3(p):
     '''
-    section3 :  OPEN_SIMSECT simsect CLOUSE_SIMPLESECT
-        |   OPEN_SECTION section CLOUSE_SECTION
+    section3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT
+        |   OPEN_SECTION section CLOSE_SECTION
 
-        | OPEN_SIMSECT CLOUSE_SIMPLESECT section3simsect
-        | OPEN_SECTION section CLOUSE_SECTION section3section
+        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
+        | OPEN_SECTION section CLOSE_SECTION section3section
     '''
 
 def p_section3section(p):
     '''
-    section3section:    OPEN_SECTION section CLOUSE_SECTION section3section
+    section3section: OPEN_SECTION section CLOSE_SECTION section3section
     | OPEN_SECTION  section CLOUSE_SECTION
     '''
 
 def p_section3simsect(p):
     '''
-    section3simsect : OPEN_SIMSECT simsect CLOUSE_SIMPLESECT section3simsect
-        |   OPEN_SIMSECT simsect CLOUSE_SIMPLESECT
+    section3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
+        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT
     '''
 
 def p_simplesec(p):
@@ -167,7 +167,7 @@ def p_simplesec2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT simplesec2
             |   OPEN_PARA  para CLOSE_PARA simplesec2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA simplesec2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS simplesec2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS simplesec2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT simplesec2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
             |   OPEN_COMMENT comment CLOSE_COMMENT simplesec2
@@ -176,7 +176,7 @@ def p_simplesec2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
@@ -187,14 +187,14 @@ def p_info(p):
      '''
         info : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT info
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT info
-            |   OPEN_ADDREESS address CLOSE_ADDREESS info
+            |   OPEN_ADDRESS address CLOSE_ADDRESS info
             |   OPEN_AUTHOR author CLOSE_AUTHOR info
             |   OPEN_DATE date CLOSE_DATE info
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT info
             |   OPEN_TITLE title CLOSE_TITLE info
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
-            |   OPEN_ADDREESS address CLOSE_ADDREESS 
+            |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_AUTHOR author CLOSE_AUTHOR 
             |   OPEN_DATE date CLOSE_DATE 
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT 
@@ -208,7 +208,7 @@ def p_info(p):
 
 def p_abstract(p):
     '''
-        abstract : OPEN_TITLE title CLOSE_TITLE abstract
+        abstract : OPEN_TITLE title CLOSE_TITLE abstract2
             |   abstract2 
     '''
 
@@ -236,7 +236,13 @@ def p_address(p):
             |   OPEN_STATE state CLOSE_STATE address
             |   OPEN_PHONE phone CLOSE_PHONE address
             |   OPEN_EMAIL email CLOSE_EMAIL address
-            |   empy
+            |   text 
+            |   OPEN_STREET street CLOSE_STREET 
+            |   OPEN_CITY city CLOSE_CITY 
+            |   OPEN_STATE state CLOSE_STATE 
+            |   OPEN_PHONE phone CLOSE_PHONE 
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   empty
     '''
 
 def p_empty(p):
@@ -244,21 +250,17 @@ def p_empty(p):
 
 def p_copyright(p):
     '''
-        copyright : OPEN_YEAR year CLOSE_YEAR copyright2 
+        copyright : OPEN_YEAR year CLOSE_YEAR copyright
             |   OPEN_YEAR year CLOSE_YEAR
+            |   OPEN_YEAR year CLOSE_YEAR copyright2
     '''
 
 def p_copyright2(p):
      '''
-        copyright2 : OPEN_YEAR year CLOSE_YEAR copyright2
-            |   copyright3
-    '''
-
-def p_copyright3(p):
-     '''
-        copyright3 : OPEN_HOLDER holder CLOSE_HOLDER copyright3
+        copyright2 : OPEN_HOLDER holder CLOSE_HOLDER copyright2
             |   OPEN_HOLDER holder CLOSE_HOLDER
     '''
+
 def p_title(p):
    '''
         title : text title
@@ -479,7 +481,7 @@ def p_simpara(p):
             |   OPEN_EMAIL email CLOSE_EMAIL 
             |   OPEN_AUTHOR author CLOSE_AUTHOR  
     '''
-    archivo_html.write("<p></p>\n".format(text))
+    archivo_html.write("<p></p>\n")
 
 def para(p):
     '''
@@ -507,7 +509,7 @@ def para(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
         
     '''
-    archivo_html.write("<p></p>\n".format(text))
+    archivo_html.write("<p></p>\n")
 
 def p_mediaobject(p):
      '''
@@ -592,20 +594,20 @@ def p_thead(p):
     '''
     thead : bloque
     '''
-    archivo_html.write("<th></th>\n".format(text))
+    archivo_html.write("<th></th>\n")
 
 def p_tfoot(p):
     '''
     tfoot : bloque
     '''
-    archivo_html.write("<td></td>\n".format(text))
+    archivo_html.write("<td></td>\n")
 
 
 def p_tbody(p):
     '''
     tbody : bloque
     '''
-    archivo_html.write("<tr></tr>\n".format(text))
+    archivo_html.write("<tr></tr>\n")
 
 
 def p_bloque(p):
@@ -654,7 +656,7 @@ def p_itemzedlist(p):
     itemzedlist: listitem itemzedlist
         |   listitem 
     '''
-    archivo_html.write("<ul></ul>\n".format(text))
+    archivo_html.write("<ul></ul>\n")
 
 def p_listem(p):
     '''
@@ -677,7 +679,7 @@ def p_listem(p):
         |   OPEN_COMMENT comment CLOSE_COMMENT 
         |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
-    archivo_html.write("<li></li>\n".format(text))
+    archivo_html.write("<li></li>\n")
 
 def p_text(p):
     '''
@@ -735,7 +737,7 @@ def mostrar_ventana_entrada():
 
     ventana_entrada = tk.Toplevel(ventana)
     ventana_entrada.title("Ventana de Entrada")
-    ventana_entrada.geometry("400x200")
+    ventana_entrada.geometry("800x400")
     
     etiqueta_entrada = tk.Label(ventana_entrada, text="Ingrese un texto")
     etiqueta_entrada.pack()
@@ -779,6 +781,52 @@ ventana.bind('<Control-d>', cerrar_interfaz)
 
 # Iniciar el bucle principal de la ventana
 ventana.mainloop()
+
+"""
+/Formato DockType
+            with open("archivo.html","a") as file:
+                file.write("<!DOCKTYPE html>\n")
+        
+        //Formato Title Principal
+             with open("archivo.html","a") as file:
+                file.write("<H1></H1>\n")
+        
+        //Formato Titulo en Secciones 
+             with open("archivo.html","a") as file:
+                file.write("<H2></H2>\n")
+        
+        //Formato adentro de Info
+            
+        
+        //Formato adentro etiqueta Important
+        
+        //Transformacion Etiqueta Para o SimPara
+             with open("archivo.html","a") as file:
+                file.write("<p></p>\n")
+        
+        //Transformacion Etiqueta Link
+             with open("archivo.html","a") as file:
+                file.write("<></>\n")
+        
+        //Transformación Tabla
+            //transformacion thead
+                with open("archivo.html","a") as file:
+                file.write("<th></th>\n")
+            
+            //transformacion tfoot
+                with open("archivo.html","a") as file:
+                file.write("<td></td>\n")
+            //transformacion tbody
+                with open("archivo.html","a") as file:
+                file.write("<tr></tr>\n")
+        
+        //Transformación Itemized List
+             with open("archivo.html","a") as file:
+                file.write("<ul></ul>\n")
+         //Transformación List Item
+             with open("archivo.html","a") as file:
+                file.write("<ul></ul>\n")
+ """
 
         
                 
