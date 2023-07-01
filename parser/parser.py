@@ -692,17 +692,11 @@ def p_error(p):
     else:
         print("Error de sintaxis en la entrada")
 
-#Ejecutar parser, CORREGIR
-
-limport tkinter as tk
-from tkinter import filedialog
-import ply.lex as lex
-import ply.yacc as yacc
-
-# Define aquí tus reglas de análisis léxico (lexer) y sintáctico (parser)
 
 # lexer = lex.lexer()
 # yacc.yacc()
+
+#Ejecutar parser, CORREGIR
 
 def abrir_archivo():
     archivo = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
