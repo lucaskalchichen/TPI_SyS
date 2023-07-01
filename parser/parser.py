@@ -218,7 +218,13 @@ def p_address(p):
             |   OPEN_STATE state CLOSE_STATE address
             |   OPEN_PHONE phone CLOSE_PHONE address
             |   OPEN_EMAIL email CLOSE_EMAIL address
-            |   empy
+            |   text 
+            |   OPEN_STREET street CLOSE_STREET 
+            |   OPEN_CITY city CLOSE_CITY 
+            |   OPEN_STATE state CLOSE_STATE 
+            |   OPEN_PHONE phone CLOSE_PHONE 
+            |   OPEN_EMAIL email CLOSE_EMAIL 
+            |   empty
     '''
 
 
