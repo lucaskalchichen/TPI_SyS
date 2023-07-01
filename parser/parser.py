@@ -1,8 +1,8 @@
 import tkinter as tk
+
 from tkinter import filedialog
 
-
-from lexer.lexer import tokens
+from lexer import tokens,lexer
 
 import ply.yacc as yacc
 
@@ -723,7 +723,7 @@ def mostrar_ventana_entrada():
         if error:
             print("El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
         else:
-            print("¡Lenguaje escrito correctamente!")
+            print("¡Lenguaje con Tokens reconocidos correctamente!")
 
         parser = yacc.yacc()
         result = parser.parse(data)

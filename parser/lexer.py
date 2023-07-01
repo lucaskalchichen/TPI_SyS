@@ -1,11 +1,5 @@
 
-import argparse
-
 import ply.lex as lex
-
-
-
-
 
 # Lista de tokens
 tokens = (
@@ -197,8 +191,8 @@ def t_OPEN_LINK(t):
 t_OPEN_LINK.__doc__ = r'<openlink\s+url="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
 
 def t_URL(p):
-   t = r'https?://[^\s<>"]+'
-   return t
+    r'https?://[^\s<>"]+'
+    return t
 
 # Ignorar espacios en blanco y saltos de línea, r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
 
