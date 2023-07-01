@@ -18,7 +18,7 @@ def mostrar_ventana_entrada():
     entrada_texto = tk.Entry(ventana_entrada)
     entrada_texto.pack()
     
-    boton_ejecutar_entrada = tk.Button(ventana_entrada, text="Ejecutar" ,command=)
+    boton_ejecutar_entrada = tk.Button(ventana_entrada, text="Ejecutar" ,)
     boton_ejecutar_entrada.pack()
     
     boton_salir_entrada = tk.Button(ventana_entrada, text="Salir", command=ventana_entrada.destroy)

@@ -98,7 +98,7 @@ tokens = (
 )
 
 # Definición de patrones para los tokens
-t_DOCTYPE_ARTICLE = r'<DOCTYPE article>'
+t_DOCTYPE_ARTICLE = r"<!DOCTYPE\s+article>"
 t_OPEN_ARTICLE = r'<article>'
 t_CLOSE_ARTICLE = r'</article>'
 t_OPEN_BOOK = r'<book>'
@@ -175,7 +175,7 @@ t_OPEN_SIMPARA = r'<simpara>'
 t_CLOSE_SIMPARA = r'</simpara>'
 t_OPEN_INFO = r'<info>'
 t_CLOSE_INFO = r'</info>'
-t_TEXT = r'[^<>]+'
+t_TEXT = r'[^<>!]+'
 t_OPEN_IMAGENOBJECT =r'<imageobject>'
 t_CLOSE_IMAGENOBJECT =r'</imageobject>'
 t_OPEN_VIDEOOBJECT =r'<videoobject>'
@@ -206,7 +206,13 @@ def t_URL(p):
 t_ignore = ' \n'
 
 # Función para manejar errores de tokens no válidos
-
+'''def t_error(t):
+    if t.value.startswith('<') and t.value.endswith('>'):
+        print("Etiqueta no válida: '%s'" % t.value)
+    else:
+        print("Carácter no válido: '%s'" % t.value[0])
+    t.lexer.skip(1)
+'''
 
 def t_error(t):
     if t.value.startswith('<') and t.value.endswith('>'):
@@ -219,7 +225,7 @@ def t_error(t):
 lexer = lex.lex()
 
 data = '''
-<DOCTYPE article>
+<!DOCTYPE article>
     <article>
         <info>
             <title>El titulo del articulo</title>

@@ -184,7 +184,7 @@ def p_simplesec2(p):
     '''
 
 def p_info(p):
-     '''
+    '''
         info : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT info
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT info
             |   OPEN_ADDRESS address CLOSE_ADDRESS info
@@ -276,12 +276,11 @@ def p_title(p):
 
 
 def p_important(p):
-     '''
+    '''
         important : OPEN_TITLE title CLOSE_TITLE important2
             |   important2
-
     '''
-    archivo_html.write('<div style="background-color: red ; color: white ; display:inline-block ; height: auto;">{}</div>',format())
+    archivo_html.write("<div style='background-color: red ; color: white ; display:inline-block ; height: auto;'>{}</div>")
 
 
 
