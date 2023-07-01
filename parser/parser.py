@@ -21,7 +21,7 @@ def p_article1(p):
     '''
 def p_article2(p):
     '''
-        article2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM article2
+        article2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
@@ -30,7 +30,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT article2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -39,7 +39,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3section
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3section
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3section
             |   OPEN_PARA para CLOSE_PARA article3section
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3section
@@ -48,7 +48,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
             |   OPEN_COMMENT TEXT CLOSE_COMMENT article3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3simsection
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
             |   OPEN_PARA para CLOSE_PARA article3simsection
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3simsection
@@ -85,7 +85,7 @@ def p_section1(p):
 
 def p_section2(p):
     '''
-        section2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM section2
+        section2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
             |   OPEN_PARA  para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
@@ -94,7 +94,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT section2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -103,7 +103,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3section
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3section
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3section
             |   OPEN_PARA para CLOSE_PARA section3section
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3section
@@ -112,7 +112,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3section
             |   OPEN_COMMENT TEXT CLOSE_COMMENT section3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3section
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3simsection
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3simsection
             |   OPEN_PARA para CLOSE_PARA section3simsection
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3simsection
@@ -150,7 +150,7 @@ def p_simplesec1(p):
 
 def p_simplesec2(p):
     '''
-        simplesec2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM simplesec2
+        simplesec2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST simplesec2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT simplesec2
             |   OPEN_PARA  para CLOSE_PARA simplesec2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA simplesec2
@@ -159,7 +159,7 @@ def p_simplesec2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT simplesec2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT simplesec2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -327,7 +327,7 @@ def para(p):
             |   OPEN_EMAIL email CLOSE_EMAIL para
             |   OPEN_AUTHOR author CLOSE_AUTHOR para
             |   OPEN_COMMENT comment CLOSE_COMMENT para
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST para
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
             |   OPEN_ADDRESS address CLOSE_ADDRESS para
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
@@ -338,7 +338,7 @@ def para(p):
             |   OPEN_EMAIL email CLOSE_EMAIL 
             |   OPEN_AUTHOR author CLOSE_AUTHOR 
             |   OPEN_COMMENT comment CLOSE_COMMENT 
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
             |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
@@ -359,7 +359,7 @@ def p_important(p):
 
 def p_important2(p):
      '''
-        important2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM important2
+        important2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST important2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT important2
             |   OPEN_PARA para CLOSE_PARA important2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA important2
@@ -368,7 +368,7 @@ def p_important2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE important2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT important2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT important2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
