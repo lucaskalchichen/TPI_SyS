@@ -25,7 +25,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS article2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT article2
@@ -34,7 +34,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
@@ -43,7 +43,7 @@ def p_article2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3
             |   OPEN_PARA para CLOSE_PARA article3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3
-            |   OPEN_ADDREESS address CLOSE_ADDRESS article3
+            |   OPEN_ADDRESS address CLOSE_ADDRESS article3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3
             |   OPEN_COMMENT TEXT CLOSE_COMMENT article3
@@ -52,22 +52,22 @@ def p_article2(p):
 
 def p_article3(p):
     '''
-        article3 :  OPEN_SIMSECT simsect CLOUSE_SIMPLESECT 
-        |   OPEN_SECTION section CLOUSE_SECTION
+        article3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
+        |   OPEN_SECTION section CLOSE_SECTION
 
-        | OPEN_SIMSECT CLOUSE_SIMPLESECT article3simsect
-        | OPEN_SECTION section CLOUSE_SECTION article3section
+        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
+        | OPEN_SECTION section CLOSE_SECTION article3section
     
     '''
 def p_article3section(p):
     '''
-    article3section:    OPEN_SECTION section CLOUSE_SECTION article3section
-    | OPEN_SECTION  section CLOUSE_SECTION
+    article3section:    OPEN_SECTION section CLOSE_SECTION article3section
+    | OPEN_SECTION  section CLOSE_SECTION
     '''
 def p_article3(p):
     '''
-    article3simsect : OPEN_SIMSECT simsect CLOUSE_SIMPLESECT article3simsect
-        |   OPEN_SIMSECT simsect CLOUSE_SIMPLESECT 
+    article3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT article3simsect
+        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT 
     '''
 
 def p_section(p):
@@ -89,7 +89,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
             |   OPEN_PARA  para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS section2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT section2
@@ -98,7 +98,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
@@ -107,7 +107,7 @@ def p_section2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3
             |   OPEN_PARA para CLOSE_PARA section3
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3
-            |   OPEN_ADDREESS address CLOSE_ADDRESS section3
+            |   OPEN_ADDRESS address CLOSE_ADDRESS section3
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3
             |   OPEN_COMMENT TEXT CLOSE_COMMENT section3
@@ -116,23 +116,23 @@ def p_section2(p):
 
 def p_section3(p):
     '''
-    section3 :  OPEN_SIMSECT simsect CLOUSE_SIMPLESECT
-        |   OPEN_SECTION section CLOUSE_SECTION
+    section3 :  OPEN_SIMSECT simsect CLOSE_SIMPLESECT
+        |   OPEN_SECTION section CLOSE_SECTION
 
-        | OPEN_SIMSECT CLOUSE_SIMPLESECT section3simsect
-        | OPEN_SECTION section CLOUSE_SECTION section3section
+        | OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
+        | OPEN_SECTION section CLOSE_SECTION section3section
     '''
 
 def p_section3section(p):
     '''
-    section3section:    OPEN_SECTION section CLOUSE_SECTION section3section
+    section3section: OPEN_SECTION section CLOSE_SECTION section3section
     | OPEN_SECTION  section CLOUSE_SECTION
     '''
 
 def p_section3simsect(p):
     '''
-    section3simsect : OPEN_SIMSECT simsect CLOUSE_SIMPLESECT section3simsect
-        |   OPEN_SIMSECT simsect CLOUSE_SIMPLESECT
+    section3simsect : OPEN_SIMSECT simsect CLOSE_SIMPLESECT section3simsect
+        |   OPEN_SIMSECT simsect CLOSE_SIMPLESECT
     '''
 
 def p_simplesec(p):
@@ -154,7 +154,7 @@ def p_simplesec2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT simplesec2
             |   OPEN_PARA  para CLOSE_PARA simplesec2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA simplesec2
-            |   OPEN_ADDREESS address CLOSE_ADDRESS simplesec2
+            |   OPEN_ADDRESS address CLOSE_ADDRESS simplesec2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT simplesec2
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
             |   OPEN_COMMENT TEXT CLOSE_COMMENT simplesec2
@@ -163,7 +163,7 @@ def p_simplesec2(p):
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
-            |   OPEN_ADDREESS address CLOSE_ADDRESS
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT TEXT CLOSE_COMMENT
@@ -174,14 +174,14 @@ def p_info(p):
      '''
         info : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT info
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT info
-            |   OPEN_ADDREESS address CLOSE_ADDREESS info
+            |   OPEN_ADDRESS address CLOSE_ADDRESS info
             |   OPEN_AUTHOR author CLOSE_AUTHOR info
             |   OPEN_DATE date CLOSE_DATE info
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT info
             |   OPEN_TITLE title CLOSE_TITLE info
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
-            |   OPEN_ADDREESS address CLOSE_ADDREESS 
+            |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_AUTHOR author CLOSE_AUTHOR 
             |   OPEN_DATE date CLOSE_DATE 
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT 
