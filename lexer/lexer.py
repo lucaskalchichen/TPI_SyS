@@ -191,16 +191,16 @@ t_OPEN_VIDEOOBJECT =r'<videoobject>'
 t_CLOSE_VIDEOOBJECT =r'</videoobject>'
 
 def t_VIDEODATA(t):
-    r'<videodata fileref='+ url +'/>
+    r'<videodata fileref="'+ url +'"/>'
     return t
 
 # Expresión regular para mediadata
 def t_IMAGENDATA(t):
-    r'<imagedata fileref='+url+'/>
+    r'<imagedata fileref="'+ url + '"/>'
     return t
 
 def t_OPEN_LINK(t):
-    r'<link xlink:href=' + url + r'>'
+    r'<link xlink:href="' + url + '">'
     # Realizar acciones semánticas relacionadas con el token OPEN_LINK
     return t
 

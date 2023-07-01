@@ -1,19 +1,32 @@
+import tkinter as tk
+from tkinter import filedialog
+
+
 from lexer.lexer import tokens
 
 import ply.yacc as yacc
+
+archivo_html = open("html.txt", "w")
 
 # reglas Gramaticales
 
 def p_document(p):
     '''document : doctype article'''
+    archivo_html.write('''<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHIVO_HTML_CREADO_POR_EL_PARSER</title>
+</head><body>{}</body></html>''')
 def doctype(p):
     'doctype : DOCTYPE_ARTICLE'  
+    
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
             |   aticle1
     '''
-
+    archivo_html.write('''<article>{}</article>''')
 def p_article1(p):
     '''
         article1 :  OPEN_TITLE title ClOSE_TITLE article2
@@ -187,6 +200,11 @@ def p_info(p):
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT 
             |   OPEN_TITLE title CLOSE_TITLE
     '''
+    archivo_html.write('<div style="background-color: green; color: white; font-size: 8pt;" >{}</div>')
+
+
+
+
 
 def p_abstract(p):
     '''
@@ -221,7 +239,7 @@ def p_address(p):
             |   empy
     '''
 
-def p_empt(p):
+def p_empty(p):
     pass
 
 def p_copyright(p):
@@ -261,6 +279,9 @@ def p_important(p):
             |   important2
 
     '''
+    archivo_html.write('<div style="background-color: red ; color: white ; display:inline-block ; height: auto;">{}</div>',format())
+
+
 
 def p_important2(p):
      '''
@@ -458,6 +479,7 @@ def p_simpara(p):
             |   OPEN_EMAIL email CLOSE_EMAIL 
             |   OPEN_AUTHOR author CLOSE_AUTHOR  
     '''
+    archivo_html.write("<p></p>\n".format(text))
 
 def para(p):
     '''
@@ -485,7 +507,7 @@ def para(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
         
     '''
-
+    archivo_html.write("<p></p>\n".format(text))
 
 def p_mediaobject(p):
      '''
@@ -570,24 +592,28 @@ def p_thead(p):
     '''
     thead : bloque
     '''
+    archivo_html.write("<th></th>\n".format(text))
 
 def p_tfoot(p):
     '''
     tfoot : bloque
     '''
+    archivo_html.write("<td></td>\n".format(text))
 
 
 def p_tbody(p):
     '''
     tbody : bloque
     '''
+    archivo_html.write("<tr></tr>\n".format(text))
+
 
 def p_bloque(p):
     '''
     bloque :row bloque
         |row
     '''
-
+    
 def p_row(p):
     '''
     row : entry row
@@ -628,13 +654,14 @@ def p_itemzedlist(p):
     itemzedlist: listitem itemzedlist
         |   listitem 
     '''
+    archivo_html.write("<ul></ul>\n".format(text))
 
 def p_listem(p):
     '''
     listitem:   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
         |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
-        |   OPEN_PARA para CLOSE_PARAlistitem
-        |   OPEN_SIMPARA simpara CLOSE_SIMPARAlistitem
+        |   OPEN_PARA para CLOSE_PARA listitem
+        |   OPEN_SIMPARA simpara CLOSE_SIMPARA listitem
         |   OPEN_ADDRESS address CLOSE_ADDRESS listitem
         |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT listitem
         |   OPEN_INFORMALTABLE informaltalbe CLOSE_INFORMALTABLE listitem
@@ -650,6 +677,7 @@ def p_listem(p):
         |   OPEN_COMMENT comment CLOSE_COMMENT 
         |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
+    archivo_html.write("<li></li>\n".format(text))
 
 def p_text(p):
     '''
@@ -665,35 +693,92 @@ def p_error(p):
 
 #Ejecutar parser, CORREGIR
 
-ctrl = input("Presione (1) para ingresar la dirección del archivo txt o (2) para ingresar por teclado: ")
-if ctrl == "1":
-    direccion = input("Ingrese la dirección del archivo txt: ")
-    file = open(direccion, "r")
-    data = file.read()
-    print("Se cargó el archivo:", data)
-elif ctrl == "2":
-    data = input("Ingrese la cadena que desea comprobar: ")
-    print("La cadena escrita es:", data)
+limport tkinter as tk
+from tkinter import filedialog
+import ply.lex as lex
+import ply.yacc as yacc
 
-lexer = lex.lexer()
-lexer.input(data)
-error = False
+# Define aquí tus reglas de análisis léxico (lexer) y sintáctico (parser)
 
-while True:
-    tok = lexer.token()
-    print(tok)
-    if tok is None:
-        break
-    elif tok.value == "true":
-        error = True
+# lexer = lex.lexer()
+# yacc.yacc()
 
-if error:
-    print("El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
-else:
-    print("¡Lenguaje escrito correctamente!")
+def abrir_archivo():
+    archivo = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
+    etiqueta.config(text="Archivo seleccionado: " + archivo)
+    with open(archivo, 'r') as file:
+        data = file.read()
+    lexer.input(data)
+    boton_ejecutar.config(state=tk.NORMAL)
 
-parser = yacc.yacc()
-result = parser.parse(data)
-        
+def mostrar_ventana_entrada():
+    def ejecutar_parser():
+        data = entrada_texto.get()
+        lexer.input(data)
+
+        error = False
+        while True:
+            tok = lexer.token()
+            print(tok)
+            if tok is None:
+                break
+            elif tok.value == "true":
+                error = True
+
+        if error:
+            print("El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
+        else:
+            print("¡Lenguaje escrito correctamente!")
+
+        parser = yacc.yacc()
+        result = parser.parse(data)
+
+    ventana_entrada = tk.Toplevel(ventana)
+    ventana_entrada.title("Ventana de Entrada")
+    ventana_entrada.geometry("400x200")
+    
+    etiqueta_entrada = tk.Label(ventana_entrada, text="Ingrese un texto")
+    etiqueta_entrada.pack()
+    
+    entrada_texto = tk.Entry(ventana_entrada)
+    entrada_texto.pack()
+    
+    boton_ejecutar_entrada = tk.Button(ventana_entrada, text="Ejecutar", command=ejecutar_parser)
+    boton_ejecutar_entrada.pack()
+    
+    boton_salir_entrada = tk.Button(ventana_entrada, text="Salir", command=ventana_entrada.destroy)
+    boton_salir_entrada.pack()
+
+def cerrar_interfaz(event):
+    if event.keysym == 'd' and event.state == 4:  # Comprueba si se presionó Control + D
+        ventana.quit()
+
+# Crear la ventana principal
+ventana = tk.Tk()
+ventana.title("Interfaz con selección de archivo")
+ventana.geometry("800x400")
+
+# Crear los elementos de la interfaz
+etiqueta = tk.Label(ventana, text="Presiona el botón 'Archivo de Lectura' para seleccionar un archivo de lectura del parser.\nPresiona el botón 'Modo Interactivo' para ingresar el texto del deseas realizar la comprobacion sintatica.")
+etiqueta.pack()
+
+boton1 = tk.Button(ventana, text="Archivo de Lectura", command=abrir_archivo)
+boton1.pack()
+
+boton2 = tk.Button(ventana, text="Modo Interactivo", command=mostrar_ventana_entrada)
+boton2.pack()
+
+boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.DISABLED)
+boton_ejecutar.pack()
+
+boton_salir = tk.Button(ventana, text="Salir", command=ventana.quit)
+boton_salir.pack()
+
+# Vincular el cierre de la interfaz a la combinación de teclas Control + D
+ventana.bind('<Control-d>', cerrar_interfaz)
+
+# Iniciar el bucle principal de la ventana
+ventana.mainloop()
+
         
                 
