@@ -532,7 +532,126 @@ def p_imageobject2(p):
     '''
         imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
     '''
+def p_informaltable(p):
+    """
+    informaltable :tableobject
+        | tablegroup
+    """
 
+def p_tableobject(p):
+    '''
+    tableobject : mediaobject tableobject
+        | mediaobject
+    '''
+
+def p_tablegroup(p):
+    '''
+    tablegroup : tgroup tablegroup
+        | tgroup
+    '''
+
+def p_tgroup(p):
+    '''
+    tgroup : thead tgroup1
+        | tgroup1
+    '''
+
+def p_tgroup1(p):
+    '''
+    tgroup1 : tfoot tgroup2
+        | tgroup2
+    '''
+
+def p_tgroup2(p):
+    '''
+    tgroup2 : tbody
+    '''
+
+
+def p_thead(p):
+    '''
+    thead : row thead
+        |row
+    '''
+
+def p_tfoot(p):
+    '''
+    tfoot : row tfoot
+        |row
+    '''
+
+
+def p_tbody(p):
+    '''
+    tbody : row tbody
+        |row
+    '''
+
+def p_row(p):
+    '''
+    row : entry row
+        | entrytbl row
+        | entry
+        | entrytbl
+    '''
+
+def p_entrybl(p):
+    '''
+    entrytbl : thead entrytbl1
+        | entrytbl1
+    '''
+def p_entrybl1(p):
+    '''
+    entrybl1: tbody
+    '''
+
+def p_entry(p):
+     '''
+        entry : text entry
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST entry
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
+            | OPEN_PARA para CLOSE_PARA entry
+            | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT entry
+            | OPEN_COMMENT comment CLOSE_COMMENT entry
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
+            | text
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST 
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            | OPEN_PARA para CLOSE_PARA 
+            | OPEN_SIMPARA simpara CLOSE_SIMPARA
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
+            | OPEN_COMMENT comment CLOSE_COMMENT
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+    '''
+
+def p_itemzedlist(p):
+    '''
+    itemizedlist: listitem itemizedlist
+        |   listitem 
+    '''
+
+def p_listitem(p):
+    '''
+    listitem:  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
+        |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
+        |   OPEN_PARA para CLOSE_PARA listitem
+        |   OPEN_SIMPARA simpara CLOSE_SIMPARA listitem
+        |   OPEN_ADDRESS address CLOSE_ADDRESS listitem
+        |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT listitem
+        |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE listitem
+        |   OPEN_COMMENT comment CLOSE_COMMENT listitem
+        |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT listitem  
+        |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
+        |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
+        |   OPEN_PARA para CLOSE_PARA
+        |   OPEN_SIMPARA simpara CLOSE_SIMPARA
+        |   OPEN_ADDRESS address CLOSE_ADDRESS 
+        |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+        |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+        |   OPEN_COMMENT comment CLOSE_COMMENT 
+        |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
+    '''
 def p_text(p):
     '''
         text : TEXT
