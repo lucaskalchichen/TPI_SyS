@@ -95,6 +95,14 @@ tokens = (
     'CLOSE_IMAGENOBJECT',
     'IMAGENDATA',
     'VIDEODATA',
+    'OPEN_TGROUP',
+    'CLOSE_TGROUP',
+    'OPEN_THEAD',
+    'CLOSE_THEAD',
+    'OPEN_TFOOT',
+    'CLOSE_TFOOT',
+    'OPEN_ENTRYBL',
+    'CLOSE_ENTRYBL',
 )
 
 # Definición de patrones para los tokens
@@ -180,6 +188,14 @@ t_OPEN_IMAGENOBJECT =r'<imageobject>'
 t_CLOSE_IMAGENOBJECT =r'</imageobject>'
 t_OPEN_VIDEOOBJECT =r'<videoobject>'
 t_CLOSE_VIDEOOBJECT =r'</videoobject>'
+t_OPEN_TGROUP = r'<tgroup>'
+t_CLOSE_TGROUP = r'</tgroup>'
+t_OPEN_THEAD = r'<thead>'
+t_CLOSE_THEAD = r'</thead>'
+t_OPEN_TFOOT = r'<tfoot>'
+t_CLOSE_TFOOT = r'</tfoot>'
+t_OPEN_ENTRYBL = r'<entrybl>'
+t_CLOSE_ENTRYBL = r'</entrybl>'
 
 def t_VIDEODATA(t):
     t.value = t.lexer.lexmatch.group('URL')
@@ -223,7 +239,7 @@ def t_error(t):
 
 # Crear el lexer
 lexer = lex.lex()
-
+"""
 data = '''
 <!DOCTYPE article>
     <article>
@@ -256,3 +272,4 @@ while True:
     if not token:
         break
     print(token)
+"""

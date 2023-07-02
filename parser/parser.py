@@ -10,23 +10,18 @@ archivo_html = open("html.txt", "w")
 
 # reglas Gramaticales
 
+# reglas Gramaticales
+
 def p_document(p):
     '''document : doctype article'''
-    archivo_html.write('''<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARCHIVO_HTML_CREADO_POR_EL_PARSER</title>
-</head><body>{}</body></html>''')
 def doctype(p):
     'doctype : DOCTYPE_ARTICLE'  
-    
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
             |   article1
     '''
-    archivo_html.write('''<article>{}</article>''')
+
 def p_article1(p):
     '''
         article1 :  OPEN_TITLE title ClOSE_TITLE article2
@@ -36,7 +31,7 @@ def p_article2(p):
     '''
         article2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
-            |   OPEN_PARA  para CLOSE_PARA article2
+            |   OPEN_PARA para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
             |   OPEN_ADDRESS address CLOSE_ADDRESS article2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article2
@@ -59,7 +54,7 @@ def p_article2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS article3section
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3section
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3section
+            |   OPEN_COMMENT comment CLOSE_COMMENT article3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
             |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
@@ -68,7 +63,7 @@ def p_article2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS article3simsection
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3simsection
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3simsection
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT article3simsection
+            |   OPEN_COMMENT comment CLOSE_COMMENT article3simsection
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3simsection
     '''
 
@@ -79,8 +74,8 @@ def p_article3section(p):
     '''
 def p_article3simsection(p):
     '''
-        article3simsection  : OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
-            | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
+    article3simsection: OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
+    | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
     '''
 
 def p_section(p):
@@ -93,14 +88,14 @@ def p_section(p):
 def p_section1(p):
     '''
         section1 :  OPEN_TITLE title ClOSE_TITLE section2
-            |   section 2
+            |   section2
     '''
 
 def p_section2(p):
     '''
         section2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
-            |   OPEN_PARA  para CLOSE_PARA section2
+            |   OPEN_PARA para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
             |   OPEN_ADDRESS address CLOSE_ADDRESS section2
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section2
@@ -123,7 +118,7 @@ def p_section2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS section3section
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3section
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3section
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT section3section
+            |   OPEN_COMMENT comment CLOSE_COMMENT section3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3section
             |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3simsection
@@ -132,7 +127,7 @@ def p_section2(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS section3simsection
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3simsection
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3simsection
-            |   OPEN_COMMENT TEXT CLOSE_COMMENT section3simsection
+            |   OPEN_COMMENT comment CLOSE_COMMENT section3simsection
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3simsection
     '''
 
@@ -144,7 +139,7 @@ def p_section3section(p):
 
 def p_section3simsection(p):
     '''
-    section3simsection  : OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
+    section3simsection: OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
         | OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC
     '''
 
@@ -184,7 +179,7 @@ def p_simplesec2(p):
     '''
 
 def p_info(p):
-    '''
+     '''
         info : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT info
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT info
             |   OPEN_ADDRESS address CLOSE_ADDRESS info
@@ -200,11 +195,6 @@ def p_info(p):
             |   OPEN_COPYRIGHT copyright CLOSE_COPYRIGHT 
             |   OPEN_TITLE title CLOSE_TITLE
     '''
-    archivo_html.write('<div style="background-color: green; color: white; font-size: 8pt;" >{}</div>')
-
-
-
-
 
 def p_abstract(p):
     '''
@@ -245,8 +235,7 @@ def p_address(p):
             |   empty
     '''
 
-def p_empty(p):
-    pass
+
 
 def p_copyright(p):
     '''
@@ -263,11 +252,11 @@ def p_copyright2(p):
 
 def p_title(p):
    '''
-        title : OPEN_TEXT text CLOSE_TEXT title
-            |   OPEN_EMPHASIS TEXT CLOSE_EMPHASIS title
-            |   link title
+        title : text title
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS title
+            |   OPEN_LINK link CLOSE_LINK title
             |   OPEN_EMAIL email CLOSE_EMAIL title
-            |   text
+            |   text 
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
             |   OPEN_LINK link CLOSE_LINK
             |   OPEN_EMAIL email CLOSE_EMAIL
@@ -362,6 +351,7 @@ def para(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+        
     '''
 
 
@@ -369,13 +359,11 @@ def para(p):
 
 
 def p_important(p):
-    '''
+     '''
         important : OPEN_TITLE title CLOSE_TITLE important2
             |   important2
+
     '''
-    archivo_html.write("<div style='background-color: red ; color: white ; display:inline-block ; height: auto;'>{}</div>")
-
-
 
 def p_important2(p):
      '''
@@ -403,7 +391,7 @@ def p_firstname(p):
     '''
         firstname : text firstname
             |   OPEN_LINK link CLOSE_LINK firstname
-            |   OPEN_EMPHASIS enphasis CLOSE_EMPHASIS firstname
+            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS firstname
             |   OPEN_COMMENT comment CLOSE_COMMENT firstname
             |   text
             |   OPEN_LINK link CLOSE_LINK
@@ -411,7 +399,7 @@ def p_firstname(p):
             |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 def p_surname(p):
-    '''
+     '''
         surname : text surname
             |   OPEN_LINK link CLOSE_LINK surname
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS surname
@@ -490,7 +478,7 @@ def p_date(p):
 def p_year(p):
      '''
         year : text year
-            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_LINK link CLOSE_LINK year
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS year
             |   OPEN_COMMENT comment CLOSE_COMMENT year
             |   text
@@ -501,7 +489,7 @@ def p_year(p):
 def p_holder(p):
     '''
         holder : text holder
-            |   OPEN_LINK link CLOSE_LINK
+            |   OPEN_LINK link CLOSE_LINK holder
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS holder
             |   OPEN_COMMENT comment CLOSE_COMMENT holder
             |   text
@@ -512,97 +500,8 @@ def p_holder(p):
 
 def p_link(p):
     '''
-    link : text link
-            |   OPEN_LINK link CLOSE_LINK link
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS link
-            |   OPEN_EMAIL email CLOSE_EMAIL link
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  link
-            |   OPEN_COMMENT comment CLOSE_COMMENT link
-            |   text
-            |   OPEN_LINK link CLOSE_LINK
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   OPEN_COMMENT comment CLOSE_COMMENT
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  
+    link : OPEN_LINK TEXT CLOSE_LINK
     '''
-
-def p_emphasis(p):
-    '''
-    emphasis : text emphasis
-            |   OPEN_LINK link CLOSE_LINK emphasis
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS emphasis
-            |   OPEN_EMAIL email CLOSE_EMAIL emphasis
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  emphasis
-            |   OPEN_COMMENT comment CLOSE_COMMENT emphasis
-            |   text
-            |   OPEN_LINK link CLOSE_LINK
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   OPEN_COMMENT comment CLOSE_COMMENT
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  
-    '''
-
-def p_comment(p):
-    '''
-    comment : text comment
-            |   OPEN_LINK link CLOSE_LINK comment
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS comment
-            |   OPEN_EMAIL email CLOSE_EMAIL comment
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  comment
-            |   OPEN_COMMENT comment CLOSE_COMMENT comment
-            |   text
-            |   OPEN_LINK link CLOSE_LINK
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   OPEN_COMMENT comment CLOSE_COMMENT
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  
-    '''
-
-def p_simpara(p):
-    '''
-    simpara : text simpara
-            |   OPEN_LINK link CLOSE_LINK simpara
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS simpara
-            |   OPEN_EMAIL email CLOSE_EMAIL simpara
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  simpara
-            |   OPEN_COMMENT comment CLOSE_COMMENT simpara
-            |   text
-            |   OPEN_LINK link CLOSE_LINK
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   OPEN_COMMENT comment CLOSE_COMMENT
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR  
-    '''
-    archivo_html.write("<p></p>\n")
-
-def para(p):
-    '''
-            para : text para
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS para
-            |   OPEN_LINK link CLOSE_LINK para
-            |   OPEN_EMAIL email CLOSE_EMAIL para
-            |   OPEN_AUTHOR author CLOSE_AUTHOR para
-            |   OPEN_COMMENT comment CLOSE_COMMENT para
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
-            |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
-            |   OPEN_ADDRESS address CLOSE_ADDRESS para
-            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
-            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE para
-            |   text
-            |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS
-            |   OPEN_LINK link CLOSE_LINK 
-            |   OPEN_EMAIL email CLOSE_EMAIL 
-            |   OPEN_AUTHOR author CLOSE_AUTHOR 
-            |   OPEN_COMMENT comment CLOSE_COMMENT 
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
-            |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
-            |   OPEN_ADDRESS address CLOSE_ADDRESS 
-            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
-            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
-        
-    '''
-    archivo_html.write("<p></p>\n")
-
 def p_mediaobject(p):
      '''
         mediaobject : OPEN_INFO info CLOSE_INFO mediadata
@@ -611,7 +510,7 @@ def p_mediaobject(p):
 def p_mediadata(p):
      '''
         mediadata : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
-            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata2
             |  OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT
             |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT
     '''
@@ -619,12 +518,10 @@ def p_mediadata2(p):
      '''
         mediadata2 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
             |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata2
+            |  OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT
     '''
-def p_mediadata3(p):
-     '''
-        mediadata3 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata3
-            |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
-    '''
+
 def p_videoobject(p):
     '''
         videoobject : OPEN_INFO INFO CLOSE_INFO videoobject2
@@ -641,7 +538,105 @@ def p_videoobject2(p):
     '''
 def p_imageobject2(p):
     '''
-        imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
+        imageobject2 : IMAGENDATA
+    '''
+def p_informaltable(p):
+    """
+    informaltable :tableobject
+        | tablegroup
+    """
+
+def p_tableobject(p):
+    '''
+    tableobject : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT tableobject
+        | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
+    '''
+
+def p_tablegroup(p):
+    '''
+    tablegroup : OPEN_TGROUP tgroup CLOSE_TGROUP tablegroup
+        | OPEN_TGROUP tgroup CLOSE_TGROUP
+    '''
+
+def p_tgroup(p):
+    '''
+    tgroup : OPEN_THEAD thead CLOSE_THEAD tgroup1
+        | tgroup1
+    '''
+
+def p_tgroup1(p):
+    '''
+    tgroup1 : OPEN_TFOOT tfoot CLOSE_TFOOT tgroup2
+        | tgroup2
+    '''
+
+def p_tgroup2(p):
+    '''
+    tgroup2 : OPEN_TBODY tbody CLOSE_TBODY
+    '''
+
+
+def p_thead(p):
+    '''
+    thead : OPEN_ROW row CLOSE_ROW thead
+        |OPEN_ROW row CLOSE_ROW
+    '''
+
+def p_tfoot(p):
+    '''
+    tfoot : OPEN_ROW row CLOSE_ROW tfoot
+        |OPEN_ROW row CLOSE_ROW
+    '''
+
+
+def p_tbody(p):
+    '''
+    tbody : OPEN_ROW row CLOSE_ROW tbody
+        |OPEN_ROW row CLOSE_ROW
+    '''
+
+def p_row(p):
+    '''
+    row : OPEN_ENTRY entry CLOSE_ENTRY row
+        | OPEN_ENTRYTBL entrytbl CLOSE_ENTRYTBL row
+        | OPEN_ENTRY entry CLOSE_ENTRY
+        | OPEN_ENTRYTBL entrytbl CLOSE_ENTRYTBL
+    '''
+
+def p_entrybl(p):
+    '''
+    entrytbl : OPEN_THEAD thead CLOSE_THEAD entrytbl1
+        | entrytbl1
+    '''
+def p_entrybl1(p):
+    '''
+    entrybl1 : OPEN_TBODY tbody CLOSE_TBODY
+    '''
+
+def p_entry(p):
+     '''
+        entry : text entry
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST entry
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
+            | OPEN_PARA para CLOSE_PARA entry
+            | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT entry
+            | OPEN_COMMENT comment CLOSE_COMMENT entry
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
+            | text
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST 
+            | OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            | OPEN_PARA para CLOSE_PARA 
+            | OPEN_SIMPARA simpara CLOSE_SIMPARA
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
+            | OPEN_COMMENT comment CLOSE_COMMENT
+            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+    '''
+
+def p_itemzedlist(p):
+    '''
+    itemizedlist : OPEN_LISTITEM listitem CLOSE_LISTITEM itemizedlist
+        |  OPEN_LISTITEM listitem CLOSE_LISTITEM
     '''
 
 def p_listitem(p):
@@ -670,22 +665,6 @@ def p_text(p):
         text : TEXT
     '''
 
-# Manejo de errores
-def p_error(p):
-    if p:
-        print("Error de sintaxis en el token '%s'" % p.value)
-    else:
-        print("Error de sintaxis en la entrada")
-
-
-# lexer = lex.lexer()
-# yacc.yacc()
-
-#Ejecutar parser, CORREGIR
-
-
-
-
 def abrir_archivo():
     archivo = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
     etiqueta = tk.Label(ventana, text="Archivo seleccionado: " + archivo)
@@ -696,7 +675,6 @@ def abrir_archivo():
         lexer.input(data)
 
         error = False
-        
         while True:
             tok = lexer.token()
             print(tok)
@@ -706,16 +684,16 @@ def abrir_archivo():
                 error = True
 
         if error:
-            etiqueta = tk.Label(ventana, text="El lenguaje tiene un error en...")
+            # Debes especificar en qué parte hay un error
+            etiqueta = tk.Label(ventana, text="El Archivo tiene un error en reconocer los tokens ")
         else:
-            etiqueta = tk.Label(ventana, text="¡Lenguaje con Tokens reconocidos correctamente!")
-
+            etiqueta = tk.Label(ventana, text="Archivo seleccionado cargo correctamente los tokens ")
         etiqueta.pack()
         parser = yacc.yacc()
         result = parser.parse(data)
-    
-    boton_ejecutar_entrada = tk.Button(ventana, text="Ejecutar", command=ejecutar_parser)
-    boton_ejecutar_entrada.pack()
+
+    boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.NORMAL, command=ejecutar_parser)
+    boton_ejecutar.pack()
 
 def mostrar_ventana_entrada():
     def ejecutar_parser():
@@ -732,9 +710,10 @@ def mostrar_ventana_entrada():
                 error = True
 
         if error:
-            etiqueta = tk.Label(ventana_entrada, text="El lenguaje tiene un error en...")
+            # Debes especificar en qué parte hay un error
+            etiqueta = tk.Label(ventana, text="La secuencia ingresada tiene un error en reconocer los tokens ")
         else:
-            etiqueta = tk.Label(ventana_entrada, text="¡Lenguaje con Tokens reconocidos correctamente!")
+            etiqueta = tk.Label(ventana, text="La secuencia ingresada cargo correctamente los tokens ")
         etiqueta.pack()
 
         parser = yacc.yacc()
@@ -750,9 +729,6 @@ def mostrar_ventana_entrada():
     entrada_texto = tk.Entry(ventana_entrada)
     entrada_texto.pack()
     
-    boton_ejecutar_entrada = tk.Button(ventana_entrada, text="Ejecutar", command=ejecutar_parser)
-    boton_ejecutar_entrada.pack()
-    
     boton_salir_entrada = tk.Button(ventana_entrada, text="Salir", command=ventana_entrada.destroy)
     boton_salir_entrada.pack()
 
@@ -762,7 +738,7 @@ def cerrar_interfaz(event):
 
 # Crear la ventana principal
 ventana = tk.Tk()
-ventana.title("Parser de Reconocimiento de DocBook a HTML")
+ventana.title("Interfaz con selección de archivo")
 ventana.geometry("800x400")
 
 # Crear los elementos de la interfaz
@@ -775,6 +751,9 @@ boton1.pack()
 boton2 = tk.Button(ventana, text="Modo Interactivo", command=mostrar_ventana_entrada)
 boton2.pack()
 
+boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.DISABLED)
+boton_ejecutar.pack()
+
 boton_salir = tk.Button(ventana, text="Salir", command=ventana.quit)
 boton_salir.pack()
 
@@ -783,6 +762,10 @@ ventana.bind('<Control-d>', cerrar_interfaz)
 
 # Iniciar el bucle principal de la ventana
 ventana.mainloop()
+
+
+
+
 
 """
 /Formato DockType
