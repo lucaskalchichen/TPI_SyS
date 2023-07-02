@@ -4,7 +4,7 @@ import argparse
 import ply.lex as lex
 
 
-
+archivo_html = open("html.txt", "w")
 
 
 # Lista de tokens
@@ -242,3 +242,4 @@ while True:
         break
     print(token)
 """
+archivo_html.close()

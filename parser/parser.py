@@ -14,6 +14,8 @@ archivo_html = open("html.txt", "w")
 
 def p_document(p):
     '''document : doctype OPEN_ARTICLE article CLOSE_ARTICLE'''
+    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>{}</body>")
+        
 def p_doctype(p):
     '''
         doctype : DOCTYPE_ARTICLE
@@ -701,6 +703,7 @@ def abrir_archivo():
         etiqueta.pack()
         parser = yacc.yacc()
         result = parser.parse(data)
+        archivo_html.close()
 
     boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.NORMAL, command=ejecutar_parser)
     boton_ejecutar.pack()
@@ -728,6 +731,8 @@ def mostrar_ventana_entrada():
 
         parser = yacc.yacc()
         result = parser.parse(data)
+        archivo_html.close()
+        
 
     ventana_entrada = tk.Toplevel(ventana)
     ventana_entrada.title("Ventana de Entrada")
