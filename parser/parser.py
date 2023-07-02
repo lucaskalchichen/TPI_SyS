@@ -548,63 +548,63 @@ def p_tableobject(p):
 
 def p_tablegroup(p):
     '''
-    tablegroup : tgroup tablegroup
-        | tgroup
+    tablegroup : OPEN_TGROUP tgroup CLOSE_TGROUP tablegroup
+        | OPEN_TGROUP tgroup CLOSE_TGROUP
     '''
 
 def p_tgroup(p):
     '''
-    tgroup : thead tgroup1
+    tgroup : OPEN_THEAD thead CLOSE_THEAD tgroup1
         | tgroup1
     '''
 
 def p_tgroup1(p):
     '''
-    tgroup1 : tfoot tgroup2
+    tgroup1 : OPEN_TFOOT tfoot CLOSE_TFOOT tgroup2
         | tgroup2
     '''
 
 def p_tgroup2(p):
     '''
-    tgroup2 : tbody
+    tgroup2 : OPEN_TBODY tbody CLOSE_TBODY
     '''
 
 
 def p_thead(p):
     '''
-    thead : row thead
-        |row
+    thead : OPEN_ROW row CLOSE_ROW thead
+        |OPEN_ROW row CLOSE_ROW
     '''
 
 def p_tfoot(p):
     '''
-    tfoot : row tfoot
-        |row
+    tfoot : OPEN_ROW row CLOSE_ROW tfoot
+        |OPEN_ROW row CLOSE_ROW
     '''
 
 
 def p_tbody(p):
     '''
-    tbody : row tbody
-        |row
+    tbody : OPEN_ROW row CLOSE_ROW tbody
+        |OPEN_ROW row CLOSE_ROW
     '''
 
 def p_row(p):
     '''
-    row : entry row
-        | entrytbl row
-        | entry
-        | entrytbl
+    row : OPEN_ENTRY entry CLOSE_ENTRY row
+        | OPEN_ENTRYTBL entrytbl CLOSE_ENTRYTBL row
+        | OPEN_ENTRY entry CLOSE_ENTRY
+        | OPEN_ENTRYTBL entrytbl CLOSE_ENTRYTBL
     '''
 
 def p_entrybl(p):
     '''
-    entrytbl : thead entrytbl1
+    entrytbl : OPEN_THEAD thead CLOSE_THEAD entrytbl1
         | entrytbl1
     '''
 def p_entrybl1(p):
     '''
-    entrybl1: tbody
+    entrybl1 : OPEN_TBODY tbody CLOSE_TBODY
     '''
 
 def p_entry(p):
@@ -629,13 +629,13 @@ def p_entry(p):
 
 def p_itemzedlist(p):
     '''
-    itemizedlist: listitem itemizedlist
-        |   listitem 
+    itemizedlist : OPEN_LISTITEM listitem CLOSE_LISTITEM itemizedlist
+        |  OPEN_LISTITEM listitem CLOSE_LISTITEM
     '''
 
 def p_listitem(p):
     '''
-    listitem:  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
+    listitem :  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
         |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
         |   OPEN_PARA para CLOSE_PARA listitem
         |   OPEN_SIMPARA simpara CLOSE_SIMPARA listitem
