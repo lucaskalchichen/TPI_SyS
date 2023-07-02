@@ -501,38 +501,38 @@ def p_mediaobject(p):
     '''
 def p_mediadata(p):
      '''
-        mediadata : videoobject mediadata2
-            |  imageobject mediadata3
-            |  videoobject
-            |  imageobject 
+        mediadata : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
+            |  OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT
     '''
 def p_mediadata2(p):
      '''
-        mediadata2 : videoobject mediadata2
-            |   imageobject mediadata2
+        mediadata2 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
+            |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata2
     '''
 def p_mediadata3(p):
      '''
-        mediadata3 : videoobject mediadata3
-            |   imageobject mediadata3
+        mediadata3 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata3
+            |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
     '''
 def p_videoobject(p):
     '''
-        videoobject : OPEN_INFO TEXT CLOSE_INFO videoobject2
+        videoobject : OPEN_INFO INFO CLOSE_INFO videoobject2
             |   videoobject2
     '''
 def p_imageobject(p):
     '''
-        imageobject : OPEN_INFO TEXT CLOSE_INFO imageobject2
+        imageobject : OPEN_INFO INFO CLOSE_INFO imageobject2
             |   imageobject2
     '''
 def p_videoobject2(p):
     '''
-        videoobject2 : OPEN_VIDEOOBJECT VIDEODATA CLOSE_VIDEOOBJECT
+        videoobject2 : VIDEODATA
     '''
 def p_imageobject2(p):
     '''
-        imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
+        imageobject2 : IMAGENDATA
     '''
 def p_informaltable(p):
     """
@@ -542,8 +542,8 @@ def p_informaltable(p):
 
 def p_tableobject(p):
     '''
-    tableobject : mediaobject tableobject
-        | mediaobject
+    tableobject : OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT tableobject
+        | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
     '''
 
 def p_tablegroup(p):
