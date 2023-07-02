@@ -210,15 +210,15 @@ t_CLOSE_SIMPLESEC = r'</simplesec>'
 t_OPEN_SIMPARA = r'<simpara>'
 t_CLOSE_SIMPARA = r'</simpara>'
 
-def t_OPEN_INFO(p):
+def t_OPEN_INFO(t):
     r'<info>'
     archivo_html.write('<div style="color:white;background-color:green;font-size:8pts">')   #anda bien
-    return(t)
+    return (t)
 
-def t_CLOSE_INFO(p):
+def t_CLOSE_INFO(t):
     r'</info>'
     archivo_html.write('</div>')
-    return(t)
+    return (t)
 
 
 
