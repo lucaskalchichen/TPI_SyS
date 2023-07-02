@@ -34,7 +34,7 @@ def p_article1(p):
     '''
 def p_article2(p):
     '''
-        article2    : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
+        article2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
@@ -610,139 +610,43 @@ def p_mediaobject(p):
     '''
 def p_mediadata(p):
      '''
-        mediadata : videoobject mediadata2
-            |  imageobject mediadata3
+        mediadata : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
+            |  OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT
+            |  OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT
     '''
 def p_mediadata2(p):
      '''
-        mediadata2 : videoobject mediadata2
-            |   imageobject mediadata2
+        mediadata2 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata2
+            |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata2
     '''
 def p_mediadata3(p):
      '''
-        mediadata3 : videoobject mediadata3
-            |   imageobject mediadata3
+        mediadata3 : OPEN_VIDEOOBJECT videoobject CLOSE_VIDEOOBJECT mediadata3
+            |   OPEN_IMAGENOBJECT imageobject CLOSE_IMAGENOBJECT mediadata3
     '''
 def p_videoobject(p):
     '''
-        videoobject : OPEN_INFO TEXT CLOSE_INFO videoobject2
+        videoobject : OPEN_INFO INFO CLOSE_INFO videoobject2
             |   videoobject2
     '''
 def p_imageobject(p):
     '''
-        imageobject : OPEN_INFO TEXT CLOSE_INFO imageobject2
+        imageobject : OPEN_INFO INFO CLOSE_INFO imageobject2
             |   imageobject2
     '''
 def p_videoobject2(p):
     '''
-        videoobject2 : OPEN_VIDEOOBJECT VIDEODATA CLOSE_VIDEOOBJECT
+        videoobject2 : VIDEODATA
     '''
 def p_imageobject2(p):
     '''
         imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
     '''
-def p_informaltable(p):
-    """
-    informaltable : tableobject
-        | tablegroup
-    """
-
-def p_tableobject(p):
-    '''
-    tableobject : mediaobject tableobject
-        | mediaobject
-    '''
-
-def p_tablegroup(p):
-    '''
-    tablegroup : tgroup tablegroup
-        | tgroup
-    '''
-
-def p_tgroup(p):
-    '''
-    tgroup : thead tgroup1
-        | tgroup1
-    '''
-
-def p_tgroup1(p):
-    '''
-    tgroup1 : tfoot tgroup2
-        | tgroup2
-    '''
-
-def p_tgroup2(p):
-    '''
-    tgroup2 : tbody
-    '''
-
-
-def p_thead(p):
-    '''
-    thead : row thead
-        |   row
-    '''
-
-def p_tfoot(p):
-    '''
-    tfoot : row tfoot
-        |   row
-    '''
-
-
-def p_tbody(p):
-    '''
-    tbody : row tbody
-        |   row
-    '''
-
-def p_row(p):
-    '''
-    row : entry row
-        | entrytbl row
-        | entry
-        | entrytbl
-    '''
-
-def p_entrybl(p):
-    '''
-    entrytbl    : thead entrytbl1
-        | entrytbl1
-    '''
-def p_entrybl1(p):
-    '''
-    entrybl1    : tbody
-    '''
-
-def p_entry(p):
-     '''
-        entry : text entry
-            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST entry
-            | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
-            | OPEN_PARA para CLOSE_PARA entry
-            | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
-            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT entry
-            | OPEN_COMMENT comment CLOSE_COMMENT entry
-            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
-            | text
-            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST 
-            | OPEN_IMPORTANT important CLOSE_IMPORTANT 
-            | OPEN_PARA para CLOSE_PARA 
-            | OPEN_SIMPARA simpara CLOSE_SIMPARA
-            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
-            | OPEN_COMMENT comment CLOSE_COMMENT
-            | OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
-    '''
-
-def p_itemzedlist(p):
-    '''
-    itemizedlist    : listitem itemizedlist
-        |   listitem 
-    '''
 
 def p_listitem(p):
     '''
-    listitem    :  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
+    listitem :  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
         |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
         |   OPEN_PARA para CLOSE_PARA listitem
         |   OPEN_SIMPARA simpara CLOSE_SIMPARA listitem
