@@ -34,7 +34,7 @@ def p_article1(p):
     '''
 def p_article2(p):
     '''
-        article2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM article2
+        article2    : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article2
             |   OPEN_PARA  para CLOSE_PARA article2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article2
@@ -43,7 +43,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article2
             |   OPEN_COMMENT comment CLOSE_COMMENT article2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -52,7 +52,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3section
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3section
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3section
             |   OPEN_PARA para CLOSE_PARA article3section
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3section
@@ -61,7 +61,7 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
             |   OPEN_COMMENT TEXT CLOSE_COMMENT article3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM article3simsection
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
             |   OPEN_PARA para CLOSE_PARA article3simsection
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA article3simsection
@@ -79,8 +79,8 @@ def p_article3section(p):
     '''
 def p_article3simsection(p):
     '''
-    article3simsection: OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
-    | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
+        article3simsection  : OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
+            | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
     '''
 
 def p_section(p):
@@ -98,7 +98,7 @@ def p_section1(p):
 
 def p_section2(p):
     '''
-        section2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM section2
+        section2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section2
             |   OPEN_PARA  para CLOSE_PARA section2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section2
@@ -107,7 +107,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section2
             |   OPEN_COMMENT comment CLOSE_COMMENT section2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -116,7 +116,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
             |   OPEN_COMMENT comment CLOSE_COMMENT
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3section
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3section
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3section
             |   OPEN_PARA para CLOSE_PARA section3section
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3section
@@ -125,7 +125,7 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3section
             |   OPEN_COMMENT TEXT CLOSE_COMMENT section3section
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3section
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM section3simsection
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3simsection
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT section3simsection
             |   OPEN_PARA para CLOSE_PARA section3simsection
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA section3simsection
@@ -144,7 +144,7 @@ def p_section3section(p):
 
 def p_section3simsection(p):
     '''
-    section3simsection: OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
+    section3simsection  : OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
         | OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC
     '''
 
@@ -163,7 +163,7 @@ def p_simplesec1(p):
 
 def p_simplesec2(p):
     '''
-        simplesec2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM simplesec2
+        simplesec2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST simplesec2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT simplesec2
             |   OPEN_PARA  para CLOSE_PARA simplesec2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA simplesec2
@@ -172,7 +172,7 @@ def p_simplesec2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE simplesec2
             |   OPEN_COMMENT comment CLOSE_COMMENT simplesec2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT simplesec2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -346,7 +346,7 @@ def para(p):
             |   OPEN_EMAIL email CLOSE_EMAIL para
             |   OPEN_AUTHOR author CLOSE_AUTHOR para
             |   OPEN_COMMENT comment CLOSE_COMMENT para
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM para
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST para
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT para
             |   OPEN_ADDRESS address CLOSE_ADDRESS para
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT para
@@ -357,12 +357,11 @@ def para(p):
             |   OPEN_EMAIL email CLOSE_EMAIL 
             |   OPEN_AUTHOR author CLOSE_AUTHOR 
             |   OPEN_COMMENT comment CLOSE_COMMENT 
-            |   OPEN_LISTITEM listitem CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT 
             |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
-        
     '''
 
 
@@ -380,7 +379,7 @@ def p_important(p):
 
 def p_important2(p):
      '''
-        important2 : OPEN_LISTITEM itemlist CLOSE_LISTITEM important2
+        important2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST important2
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT important2
             |   OPEN_PARA para CLOSE_PARA important2
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA important2
@@ -389,7 +388,7 @@ def p_important2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE important2
             |   OPEN_COMMENT comment CLOSE_COMMENT important2
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT important2
-            |   OPEN_LISTITEM itemlist CLOSE_LISTITEM
+            |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
             |   OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -642,10 +641,9 @@ def p_imageobject2(p):
     '''
         imageobject2 : OPEN_IMAGENOBJECT IMAGENDATA CLOSE_IMAGENLOBJECT
     '''
-
 def p_informaltable(p):
     """
-    informaltable :tableobject
+    informaltable : tableobject
         | tablegroup
     """
 
@@ -669,46 +667,35 @@ def p_tgroup(p):
 
 def p_tgroup1(p):
     '''
-    tgroup1 : tgroup2
+    tgroup1 : tfoot tgroup2
+        | tgroup2
     '''
 
 def p_tgroup2(p):
     '''
-    tgroup2 : tfoot tgroup3
-    | tgroup3
+    tgroup2 : tbody
     '''
 
-def p_tgroup3(p):
-    '''
-    tgroup3 : tbody
-    '''
 
 def p_thead(p):
     '''
-    thead : bloque
+    thead : row thead
+        |   row
     '''
-    archivo_html.write("<th></th>\n")
 
 def p_tfoot(p):
     '''
-    tfoot : bloque
+    tfoot : row tfoot
+        |   row
     '''
-    archivo_html.write("<td></td>\n")
 
 
 def p_tbody(p):
     '''
-    tbody : bloque
+    tbody : row tbody
+        |   row
     '''
-    archivo_html.write("<tr></tr>\n")
 
-
-def p_bloque(p):
-    '''
-    bloque :row bloque
-        |row
-    '''
-    
 def p_row(p):
     '''
     row : entry row
@@ -717,49 +704,51 @@ def p_row(p):
         | entrytbl
     '''
 
+def p_entrybl(p):
+    '''
+    entrytbl    : thead entrytbl1
+        | entrytbl1
+    '''
 def p_entrybl1(p):
     '''
-    entrytbl : thead entrytbl1
-        | entrytbl1
-        | tbody
+    entrybl1    : tbody
     '''
 
 def p_entry(p):
-    """
+     '''
         entry : text entry
-            | CLOSE_ITEMIZEDLIST temizedList  CLOSE_ITEMIZEDLIST entry
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST entry
             | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
             | OPEN_PARA para CLOSE_PARA entry
             | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
-            | OPEN_MEDIAOBJECT comment CLOSE_COMMENT entry
-            | OPEN_COMMENT comment CLOSE_COMMENTENTRY
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT entry
+            | OPEN_COMMENT comment CLOSE_COMMENT entry
             | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
             | text
-            | CLOSE_ITEMIZEDLIST temizedList CLOSE_ITEMIZEDLIST 
+            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST 
             | OPEN_IMPORTANT important CLOSE_IMPORTANT 
             | OPEN_PARA para CLOSE_PARA 
             | OPEN_SIMPARA simpara CLOSE_SIMPARA
-            | OPEN_MEDIAOBJECT mediaobject CLOSE_COMMENT 
+            | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
             | OPEN_COMMENT comment CLOSE_COMMENT
             | OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
-    """
+    '''
 
 def p_itemzedlist(p):
     '''
-    itemzedlist: listitem itemzedlist
+    itemizedlist    : listitem itemizedlist
         |   listitem 
     '''
-    archivo_html.write("<ul></ul>\n")
 
-def p_listem(p):
+def p_listitem(p):
     '''
-    listitem:   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
+    listitem    :  OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST listitem
         |   OPEN_IMPORTANT important CLOSE_IMPORTANT listitem
         |   OPEN_PARA para CLOSE_PARA listitem
         |   OPEN_SIMPARA simpara CLOSE_SIMPARA listitem
         |   OPEN_ADDRESS address CLOSE_ADDRESS listitem
         |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT listitem
-        |   OPEN_INFORMALTABLE informaltalbe CLOSE_INFORMALTABLE listitem
+        |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE listitem
         |   OPEN_COMMENT comment CLOSE_COMMENT listitem
         |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT listitem  
         |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
@@ -768,12 +757,10 @@ def p_listem(p):
         |   OPEN_SIMPARA simpara CLOSE_SIMPARA
         |   OPEN_ADDRESS address CLOSE_ADDRESS 
         |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
-        |   OPEN_INFORMALTABLE informaltalbe CLOSE_INFORMALTABLE 
+        |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
         |   OPEN_COMMENT comment CLOSE_COMMENT 
         |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
-    archivo_html.write("<li></li>\n")
-
 def p_text(p):
     '''
         text : TEXT
@@ -792,13 +779,39 @@ def p_error(p):
 
 #Ejecutar parser, CORREGIR
 
+
+
+
 def abrir_archivo():
     archivo = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
-    etiqueta.config(text="Archivo seleccionado: " + archivo)
-    with open(archivo, 'r') as file:
-        data = file.read()
-    lexer.input(data)
-    boton_ejecutar.config(state=tk.NORMAL)
+    etiqueta = tk.Label(ventana, text="Archivo seleccionado: " + archivo)
+    etiqueta.pack()
+    def ejecutar_parser():
+        with open(archivo, 'r') as file:
+            data = file.read()
+        lexer.input(data)
+
+        error = False
+        
+        while True:
+            tok = lexer.token()
+            print(tok)
+            if tok is None:
+                break
+            elif tok.value == "true":
+                error = True
+
+        if error:
+            etiqueta = tk.Label(ventana, text="El lenguaje tiene un error en...")
+        else:
+            etiqueta = tk.Label(ventana, text="¡Lenguaje con Tokens reconocidos correctamente!")
+
+        etiqueta.pack()
+        parser = yacc.yacc()
+        result = parser.parse(data)
+    
+    boton_ejecutar_entrada = tk.Button(ventana, text="Ejecutar", command=ejecutar_parser)
+    boton_ejecutar_entrada.pack()
 
 def mostrar_ventana_entrada():
     def ejecutar_parser():
@@ -815,9 +828,10 @@ def mostrar_ventana_entrada():
                 error = True
 
         if error:
-            print("El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
+            etiqueta = tk.Label(ventana_entrada, text="El lenguaje tiene un error en...")
         else:
-            print("¡Lenguaje con Tokens reconocidos correctamente!")
+            etiqueta = tk.Label(ventana_entrada, text="¡Lenguaje con Tokens reconocidos correctamente!")
+        etiqueta.pack()
 
         parser = yacc.yacc()
         result = parser.parse(data)
@@ -844,7 +858,7 @@ def cerrar_interfaz(event):
 
 # Crear la ventana principal
 ventana = tk.Tk()
-ventana.title("Interfaz con selección de archivo")
+ventana.title("Parser de Reconocimiento de DocBook a HTML")
 ventana.geometry("800x400")
 
 # Crear los elementos de la interfaz
@@ -856,9 +870,6 @@ boton1.pack()
 
 boton2 = tk.Button(ventana, text="Modo Interactivo", command=mostrar_ventana_entrada)
 boton2.pack()
-
-boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.DISABLED)
-boton_ejecutar.pack()
 
 boton_salir = tk.Button(ventana, text="Salir", command=ventana.quit)
 boton_salir.pack()

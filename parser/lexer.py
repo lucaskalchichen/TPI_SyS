@@ -217,7 +217,7 @@ def t_error(t):
 
 # Crear el lexer
 lexer = lex.lex()
-
+"""
 data = '''
 <!DOCTYPE article>
     <article>
@@ -250,3 +250,4 @@ while True:
     if not token:
         break
     print(token)
+"""
