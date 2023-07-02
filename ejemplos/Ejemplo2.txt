@@ -1,0 +1,58 @@
+<!DOCTYPE article>
+<article>
+  <title>Estudiar Ingeniería en Sistemas</title>
+  <author>
+    <firstname>María</firstname>
+    <surname>González</surname>
+  </author>
+  <abstract>Descubre las razones por las cuales estudiar Ingeniería en Sistemas es una excelente elección para tu futuro profesional.</abstract>
+  <date>1 de julio de 2023</date>
+  <copyright>
+    <holder>Universidad Tecnológica</holder>
+    <year>2023</year>
+  </copyright>
+  <address>
+    <street>Avenida Principal, 456</street>
+    <phone>555-5678</phone>
+    <email>contacto@universidadtec.com</email>
+  </address>
+  <section>¿Por qué estudiar Ingeniería en Sistemas?</section>
+  <para>La Ingeniería en Sistemas es una disciplina que combina la informática, las matemáticas y la ingeniería para resolver problemas y desarrollar soluciones tecnológicas innovadoras. Aquí te presentamos algunas razones convincentes para considerar estudiar esta carrera:</para>
+  <orderedlist>
+    <listitem>Amplias oportunidades laborales: La demanda de profesionales en el campo de la tecnología de la información y los sistemas es alta y continuará creciendo en el futuro. Estudiar Ingeniería en Sistemas te brinda acceso a diversas oportunidades laborales en empresas de tecnología, consultoría, desarrollo de software y más.</listitem>
+  </orderedlist>
+  <itemizedlist>
+    <listitem>Desarrollo de habilidades técnicas: Durante la carrera, adquirirás conocimientos sólidos en áreas como programación, bases de datos, redes, seguridad informática y análisis de sistemas. Estas habilidades técnicas son altamente valoradas en el mercado laboral actual y te brindarán una base sólida para enfrentar los desafíos tecnológicos del futuro.</listitem>
+  </itemizedlist>
+  <important>Innovación y creatividad: La Ingeniería en Sistemas te permite explorar y desarrollar soluciones innovadoras a problemas complejos. Podrás aplicar tu creatividad y pensamiento crítico para diseñar y mejorar sistemas y aplicaciones que impulsen el progreso tecnológico y mejoren la vida de las personas.</important>
+  <table>
+    <row>
+      <entry>Colaboración multidisciplinaria: La naturaleza interdisciplinaria de la Ingeniería en Sistemas te brinda la oportunidad de trabajar en equipos multidisciplinarios, donde podrás colaborar con profesionales de distintas áreas, como ingenieros de software, diseñadores, especialistas en negocios y más. Esta colaboración enriquecedora fomenta el aprendizaje conjunto y te prepara para enfrentar proyectos complejos en el mundo laboral.</entry>
+    </row>
+  </table>
+  <figure>
+    <title>Estudiante de Ingeniería en Sistemas</title>
+    <mediaobject>
+      <imageobject>
+        <imagedata>https://ejemplo.com/imagen-estudiante-ingenieria.jpg</imagedata>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <programlisting>Flexibilidad y actualización constante: La tecnología evoluciona rápidamente, y estudiar Ingeniería en Sistemas te brinda la capacidad de adaptarte y mantenerte actualizado en un entorno en constante cambio. Además, esta carrera te ofrece la flexibilidad de explorar diferentes especializaciones, como inteligencia artificial, ciberseguridad, desarrollo web, entre otras, según tus intereses y objetivos profesionales.</programlisting>
+  <note>Recuerda que la Ingeniería en Sistemas es una disciplina desafiante que requiere dedicación y esfuerzo, pero también te brinda grandes oportunidades de crecimiento y desarrollo profesional.</note>
+  <emphasis>¡No pierdas la oportunidad de formarte en una de las carreras más prometedoras del futuro!</emphasis>
+  <link>Visita nuestro sitio web para obtener más información sobre el plan de estudios y los requisitos de admisión.</link>
+  <informaltable>
+    <row>
+      <entry>Para más información</entry>
+    </row>
+    <row>
+      <entry>Contacta con nuestro departamento de admisiones</entry>
+    </row>
+  </informaltable>
+  <comment>Si tienes alguna pregunta, estaremos encantados de ayudarte. ¡Esperamos verte pronto en nuestra universidad!</comment>
+  <simplesec>Perspectivas profesionales en Ingeniería en Sistemas</simplesec>
+  <simpara>La demanda de ingenieros en sistemas es alta en la actualidad, y se espera que siga creciendo en los próximos años. Los graduados en esta disciplina tienen la oportunidad de trabajar en diversas industrias, como tecnología, banca, salud, telecomunicaciones y muchas otras. Además, la posibilidad de trabajar en proyectos innovadores y ser parte del avance tecnológico hace que la Ingeniería en Sistemas sea una opción emocionante y gratificante.</simpara>
+  <info>Consulta nuestra página de egresados destacados para conocer las historias de éxito de nuestros graduados en Ingeniería en Sistemas.</info>
+  <videoobject>Descubre por qué estudiar Ingeniería en Sistemas es una excelente elección</videoobject>
+</article>
