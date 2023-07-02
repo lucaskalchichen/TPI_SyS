@@ -4,7 +4,7 @@ import argparse
 import ply.lex as lex
 
 
-archivo_html = open("html.txt", "w")
+archivo_html = open("HTML_Salida.html", "w")
 
 
 # Lista de tokens
@@ -90,16 +90,15 @@ tokens = (
     'CLOSE_STATE',
     'OPEN_TBODY',
     'CLOSE_TBODY',
+    'URL'
 )
 
 # Definición de patrones para los tokens
 
-t_OPEN_LINK =  r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
-
 
 def t_DOCTYPE_ARTICLE(t):
     r"<!DOCTYPE\s+article>"
-    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>")
+    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head>")
     return t
 
 
@@ -237,11 +236,11 @@ def t_OPEN_INFO(t):
     archivo_html.write('<div style="color:white;background-color:green;font-size:8pts">')   #anda bien
     return t
 
+
 def t_CLOSE_INFO(t):
     r'</info>'
     archivo_html.write('</div>')
     return t
-
 
 
 def t_TEXT(t):
@@ -270,6 +269,11 @@ t_CLOSE_CITY = r'</city>'
 t_OPEN_STATE = r'<state>'
 t_CLOSE_STATE = r'</state>'
 
+
+#etiquetas de mierda 
+
+t_URL=r'https?://[^\s<>"]+'
+
 def t_VIDEODATA(t):
     t.value = t.lexer.lexmatch.group('URL')
     return t
@@ -281,7 +285,12 @@ def t_IMAGENDATA(t):
 t_IMAGENDATA.__doc__ = r'<imagedata\s+fileref="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
 
 
-    
+
+t_OPEN_LINK =  r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
+
+
+
+
 
 # Ignorar espacios en blanco y saltos de línea, r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
 
@@ -304,6 +313,8 @@ def t_error(t):
 
 # Crear el lexer
 lexer = lex.lex()
+
+
 """
 data = '''
 <!DOCTYPE article>

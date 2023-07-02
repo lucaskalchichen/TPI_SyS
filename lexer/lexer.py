@@ -4,7 +4,7 @@ import argparse
 import ply.lex as lex
 
 
-archivo_html = open("html.txt", "w")
+archivo_html = open("HTML_Salida.html", "w")
 
 
 # Lista de tokens

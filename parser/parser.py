@@ -6,7 +6,7 @@ from lexer import tokens,lexer
 
 import ply.yacc as yacc
 
-archivo_html = open("HTML_Salida.html", "w")
+#archivo_html = open("HTML_Salida.html", "w")
 
 # reglas Gramaticales
 
@@ -714,6 +714,7 @@ def abrir_archivo():
         etiqueta.pack()
         parser = yacc.yacc()
         result = parser.parse(data)
+        print(result)
         archivo_html.close()
 
     boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.NORMAL, command=ejecutar_parser)
@@ -742,6 +743,7 @@ def mostrar_ventana_entrada():
 
         parser = yacc.yacc()
         result = parser.parse(data)
+        print(result)
         archivo_html.close()
         
 
