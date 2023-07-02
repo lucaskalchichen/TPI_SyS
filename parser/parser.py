@@ -6,7 +6,7 @@ from lexer import tokens,lexer
 
 import ply.yacc as yacc
 
-archivo_html = open("html.txt", "w")
+archivo_html = open("HTML_Salida.html", "w")
 
 # reglas Gramaticales
 
@@ -14,7 +14,6 @@ archivo_html = open("html.txt", "w")
 
 def p_document(p):
     '''document : doctype OPEN_ARTICLE article CLOSE_ARTICLE'''
-    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>{}</body>")
         
 def p_doctype(p):
     '''
@@ -31,6 +30,13 @@ def p_article1(p):
         article1 :  OPEN_TITLE title CLOSE_TITLE article2
         article1 :  article2
     '''
+    open_title_token = p[1]
+    title = p[2]
+    close_title_token = p[3]
+    if open_title_token =='<title>' and close_title_token =='</title>' :
+        archivo_html.write('<h1>{}</h1>'.format(title))
+
+
 def p_article2(p):
     '''
         article2 : OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article2
@@ -94,6 +100,11 @@ def p_section1(p):
         section1 :  OPEN_TITLE title CLOSE_TITLE section2
             |   section2
     '''
+    open_title_token = p[1]
+    title = p[2]
+    close_title_token = p[3]
+    if open_title_token =='<title>' and close_title_token =='</title>' :
+        archivo_html.write('<h2>{}</h2>'.format(title))
 
 def p_section2(p):
     '''
@@ -768,9 +779,6 @@ boton1.pack()
 
 boton2 = tk.Button(ventana, text="Modo Interactivo", command=mostrar_ventana_entrada)
 boton2.pack()
-
-boton_ejecutar = tk.Button(ventana, text="Ejecutar", state=tk.DISABLED)
-boton_ejecutar.pack()
 
 boton_salir = tk.Button(ventana, text="Salir", command=ventana.quit)
 boton_salir.pack()

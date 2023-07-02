@@ -95,9 +95,27 @@ tokens = (
 # Definición de patrones para los tokens
 
 t_OPEN_LINK =  r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
-t_DOCTYPE_ARTICLE = r"<!DOCTYPE\s+article>"
-t_OPEN_ARTICLE = r'<article>'
-t_CLOSE_ARTICLE = r'</article>'
+
+
+def t_DOCTYPE_ARTICLE(t):
+    r"<!DOCTYPE\s+article>"
+    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>")
+    return t
+
+
+def t_OPEN_ARTICLE(t):
+    r'<article>'
+    archivo_html.write("<body>")
+    return t
+
+
+def t_CLOSE_ARTICLE(t): 
+    r'</article>'
+    archivo_html.write("</body>")
+    return t
+
+
+
 t_OPEN_SECTION = r'<section>'
 t_CLOSE_SECTION = r'</section>'
 t_OPEN_TITLE = r'<title>'
@@ -116,65 +134,65 @@ t_CLOSE_ADDRESS = r'</address>'
 def t_OPEN_PARA(t):
     r'<para>'
     archivo_html.write("<p>")
-    return(t)
+    return t
 
 def t_CLOSE_PARA(t):
     r'</para>'
     archivo_html.write("</p>")
-    return(t)
+    return t
 
 def t_OPEN_ITEMIZEDLIST(t):
     r'<itemizedlist>'
     archivo_html.write("<ul>")
-    return (t)
+    return t
 
 def t_CLOSE_ITEMIZEDLIST(t):
     r'</itemizedlist>'
     archivo_html.write("</ul>")
-    return (t)
+    return t
 
 def t_OPEN_LISTITEM(t):
     r'<listitem>'
     archivo_html.write("<il>")
-    return (t)
+    return t
 
 def t_CLOSE_LISTITEM(t):
     r'</listitem>'
     archivo_html.write("</il>")
-    return (t)
+    return t
 
 
 def t_OPEN_IMPORTANT(t):
     r'<important>'
     archivo_html.write('<div style="background-color:red;color:white">') #anda bien
-    return(t)
+    return t
 
 
 def t_CLOSE_IMPORTANT(t): 
     r'</important>'
     archivo_html.write('</div>')
-    return(t)
+    return t
 
 def t_OPEN_ROW(t):
     r'<row>'
     archivo_html.write("<tr>")
-    return (t)
+    return t
 def t_CLOSE_ROW(t):
     r'</row>'
     archivo_html.write("</tr>")
-    return (t)
+    return t
 
 
 def t_OPEN_ENTRY(t): 
     r'<entry>'
     archivo_html.write("<td>")
-    return (t)
+    return t
 
 
 def t_CLOSE_ENTRY(t): 
     r'</entry>'
     archivo_html.write("</td>")
-    return (t)
+    return t
 
 
 t_OPEN_MEDIAOBJECT = r'<mediaobject>'
@@ -200,12 +218,12 @@ t_CLOSE_LINK = r'</link>'
 def t_OPEN_INFORMALTABLE(t):
     r'<informaltable>'
     archivo_html.write("<table>")
-    return (t)
+    return t
 
 def t_CLOSE_INFORMALTABLE(t):
     r'</informaltable>'
     archivo_html.write("</table>")
-    return (t)
+    return t
 
 t_OPEN_COMMENT = r'<comment>'
 t_CLOSE_COMMENT = r'</comment>'
@@ -217,16 +235,22 @@ t_CLOSE_SIMPARA = r'</simpara>'
 def t_OPEN_INFO(t):
     r'<info>'
     archivo_html.write('<div style="color:white;background-color:green;font-size:8pts">')   #anda bien
-    return (t)
+    return t
 
 def t_CLOSE_INFO(t):
     r'</info>'
     archivo_html.write('</div>')
+    return t
+
+
+
+def t_TEXT(t):
+    r'[^<>!/]+'
+    archivo_html.write(f'{t.value}')
     return (t)
 
 
 
-t_TEXT = r'[^<>!/]+'
 t_OPEN_IMAGENOBJECT = r'<imageobject>'
 t_CLOSE_IMAGENOBJECT = r'</imageobject>'
 t_OPEN_VIDEOOBJECT = r'<videoobject>'
