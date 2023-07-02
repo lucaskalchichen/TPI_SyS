@@ -503,6 +503,8 @@ def p_mediadata(p):
      '''
         mediadata : videoobject mediadata2
             |  imageobject mediadata3
+            |  videoobject
+            |  imageobject 
     '''
 def p_mediadata2(p):
      '''
