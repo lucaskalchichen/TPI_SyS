@@ -6,19 +6,19 @@ from lexer import tokens,lexer
 
 import ply.yacc as yacc
 
-#archivo_html = open("HTML_Salida.html", "w")
+archivo_html = open("HTML_Salida.html", "w")
 
 # reglas Gramaticales
 
 # reglas Gramaticales
 
 def p_document(p):
-    '''document : doctype OPEN_ARTICLE article CLOSE_ARTICLE'''
-        
-def p_doctype(p):
     '''
-        doctype : DOCTYPE_ARTICLE
-    '''  
+    document : DOCTYPE_ARTICLE OPEN_ARTICLE article CLOSE_ARTICLE
+    '''
+    article = p[3]
+    archivo_html.write('<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>{}</body>'.format(article))
+        
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
@@ -170,6 +170,11 @@ def p_simplesec1(p):
         simplesec1 :  OPEN_TITLE title CLOSE_TITLE simplesec2
             |   simplesec2
     '''
+    open_title_token = p[1]
+    title = p[2]
+    close_title_token = p[3]
+    if open_title_token =='<title>' and close_title_token =='</title>' :
+        archivo_html.write('<h2>{}</h2>'.format(title))
 
 def p_simplesec2(p):
     '''
@@ -368,7 +373,6 @@ def p_para(p):
             |   OPEN_ADDRESS address CLOSE_ADDRESS 
             |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
-        
     '''
 
 
@@ -378,8 +382,7 @@ def p_para(p):
 def p_important(p):
      '''
         important : OPEN_TITLE title CLOSE_TITLE important2
-            |   important2
-
+            |   important
     '''
 
 def p_important2(p):
@@ -674,10 +677,42 @@ def p_listitem(p):
         |   OPEN_COMMENT comment CLOSE_COMMENT 
         |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
     '''
+    TOKEN1= p[1]
+    TOKEN2= p[3]
+    NOTERMINAL = p[2]
+    if (TOKEN1=='<impotant>' and TOKEN2=='</impotant>'):
+        archivo_html.write('<li><<div style="background-color:red;color:white">>{}</div></li>'.format(NOTERMINAL))
+    elif (TOKEN1=='<para>' and TOKEN2=='</para>'):
+        archivo_html.write('<>{}</>'.format(NOTERMINAL))
+    elif (TOKEN1=='<simpara>' and TOKEN2=='</simpara>'):
+        archivo_html.write('<>{}</>'.format(NOTERMINAL))
+    elif (TOKEN1=='<itemzedlist>' and TOKEN2=='</itemzedlist>'):
+        archivo_html.write('<ul>{}</ul>'.format(NOTERMINAL))
+    elif (TOKEN1=='<mediaobject>' and TOKEN2=='</mediaobject>'):
+        archivo_html.write('<li>{}</li>'.format(NOTERMINAL))
+    elif (TOKEN1=='<address>' and TOKEN2=='</address>'):
+        archivo_html.write('<li>{}</li>'.format(NOTERMINAL))
+    elif (TOKEN1=='<informaltable>' and TOKEN2=='</informaltable>'):
+        archivo_html.write('<li>{}</li>'.format(NOTERMINAL))
+    elif (TOKEN1=='<comment>' and TOKEN2=='</comment>'):
+        archivo_html.write('<li>{}</li>'.format(NOTERMINAL))
+    elif (TOKEN1=='<abstract>' and TOKEN2=='</abstract>'):
+        archivo_html.write('<li>{}</li>'.format(NOTERMINAL))
+    else:
+        pass
+
+
+
+
 def p_text(p):
+
     '''
         text : TEXT
     '''
+    TEXT = p[1]
+    archivo_html.write(TEXT)
+
+
 
 #ERRORES
 def p_error(p):

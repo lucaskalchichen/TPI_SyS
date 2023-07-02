@@ -90,16 +90,15 @@ tokens = (
     'CLOSE_STATE',
     'OPEN_TBODY',
     'CLOSE_TBODY',
+    'URL'
 )
 
 # Definición de patrones para los tokens
 
-t_OPEN_LINK =  r'<link\s+xlink:href ="[(http(s)?|ftp(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)"\s*[/]>'
-
 
 def t_DOCTYPE_ARTICLE(t):
     r"<!DOCTYPE\s+article>"
-    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head><body>")
+    archivo_html.write("<!DOCTYPE html><html><head><title>Ejemplo de Estilos en Archivo HTML</title></head>")
     return t
 
 
@@ -213,6 +212,7 @@ t_OPEN_HOLDER = r'<holder>'
 t_CLOSE_HOLDER = r'</holder>'
 t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
+t_OPEN_LINK = r'<link\s+xlink:href\s*=\s*"[^"]*"\s*/?>'
 t_CLOSE_LINK = r'</link>'
 
 def t_OPEN_INFORMALTABLE(t):
@@ -237,11 +237,11 @@ def t_OPEN_INFO(t):
     archivo_html.write('<div style="color:white;background-color:green;font-size:8pts">')   #anda bien
     return t
 
+
 def t_CLOSE_INFO(t):
     r'</info>'
     archivo_html.write('</div>')
     return t
-
 
 
 def t_TEXT(t):
@@ -269,72 +269,25 @@ t_OPEN_CITY = r'<city>'
 t_CLOSE_CITY = r'</city>'
 t_OPEN_STATE = r'<state>'
 t_CLOSE_STATE = r'</state>'
+t_IMAGENDATA = r'<imagedata\s+url="[^"]*"\s*/>'
+t_VIDEODATA = r'<videodata\s+url="[^"]*"\s*/>'
 
-def t_VIDEODATA(t):
-    t.value = t.lexer.lexmatch.group('URL')
-    return t
-t_VIDEODATA.__doc__ = r'<videodata\s+fileref="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
-
-def t_IMAGENDATA(t):
-    t.value = t.lexer.lexmatch.group('URL')
-    return t
-t_IMAGENDATA.__doc__ = r'<imagedata\s+fileref="{URL}"/>'.format(URL=r'https?://[^\s<>"]+')
+def t_URL(t):
+    r'https?://[^\s<>"]+'
 
 
-    
+
 
 # Ignorar espacios en blanco y saltos de línea, r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+'
 
 
-t_ignore = '\n'
+t_ignore = ' \n'
 
-# Función para manejar errores de tokens no válidos
-'''def t_error(t):
-    if t.value.startswith('<') and t.value.endswith('>'):
-        print("Etiqueta no válida: '%s'" % t.value)
-    else:
-        print("Carácter no válido: '%s'" % t.value[0])
-    t.lexer.skip(1)
-'''
+#Función para manejar errores de tokens no válidos
 
-def t_error(t):
-        
+def t_error(t):    
 	print ("caracter ilegal %s" % t.value[0])
 	t.lexer.skip(1)
 
 # Crear el lexer
 lexer = lex.lex()
-"""
-data = '''
-<!DOCTYPE article>
-    <article>
-        <info>
-            <title>El titulo del articulo</title>
-            <author>
-                <firstname>Juan</firstname>
-                <surname>Perez</surname>
-            </author>
-        </info>
-        <section>
-            <title>Titulo para la seccion 1</title>
-            <para>
-                Esto es un parrafo
-            </para>
-            <para>
-                Otro parrafo.
-            </para>
-        </section>
-    </article>
-'''
-
-
-# Asignar la cadena de entrada al lexer
-lexer.input(data)
-
-# Probar el lexer
-while True:
-    token = lexer.token()
-    if not token:
-        break
-    print(token)
-"""
