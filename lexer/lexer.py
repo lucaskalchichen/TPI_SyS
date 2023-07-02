@@ -86,6 +86,10 @@ tokens = (
     'CLOSE_ENTRYTBL',
     'OPEN_TBODY',
     'CLOSE_TBODY',
+    'OPEN_CITY',
+    'CLOSE_CITY',
+    'OPEN_STATE',
+    'CLOSE_STATE',
 )
 
 # Definición de patrones para los tokens
@@ -237,6 +241,10 @@ t_OPEN_ENTRYTBL = r'<entrytbl>'
 t_CLOSE_ENTRYTBL = r'</entrytbl>'
 t_OPEN_TBODY = r'<tbody>'
 t_CLOSE_TBODY = r'</tbody>'
+t_OPEN_CITY = r'<city>'
+t_CLOSE_CITY = r'</city>'
+t_OPEN_STATE = r'<state>'
+t_CLOSE_STATE = r'</state>'
 
 def t_VIDEODATA(t):
     t.value = t.lexer.lexmatch.group('URL')

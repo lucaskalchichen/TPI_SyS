@@ -112,18 +112,71 @@ t_OPEN_COPYRIGHT = r'<copyright>'
 t_CLOSE_COPYRIGHT = r'</copyright>'
 t_OPEN_ADDRESS = r'<address>'
 t_CLOSE_ADDRESS = r'</address>'
-t_OPEN_PARA = r'<para>'
-t_CLOSE_PARA = r'</para>'
-t_OPEN_ITEMIZEDLIST = r'<itemizedlist>'
-t_CLOSE_ITEMIZEDLIST = r'</itemizedlist>'
-t_OPEN_LISTITEM = r'<listitem>'
-t_CLOSE_LISTITEM = r'</listitem>'
-t_OPEN_IMPORTANT = r'<important>'
-t_CLOSE_IMPORTANT = r'</important>'
-t_OPEN_ROW = r'<row>'
-t_CLOSE_ROW = r'</row>'
-t_OPEN_ENTRY = r'<entry>'
-t_CLOSE_ENTRY = r'</entry>'
+
+def t_OPEN_PARA(t):
+    r'<para>'
+    archivo_html.write("<p>")
+    return(t)
+
+def t_CLOSE_PARA(t):
+    r'</para>'
+    archivo_html.write("</p>")
+    return(t)
+
+def t_OPEN_ITEMIZEDLIST(t):
+    r'<itemizedlist>'
+    archivo_html.write("<ul>")
+    return (t)
+
+def t_CLOSE_ITEMIZEDLIST(t):
+    r'</itemizedlist>'
+    archivo_html.write("</ul>")
+    return (t)
+
+def t_OPEN_LISTITEM(t):
+    r'<listitem>'
+    archivo_html.write("<il>")
+    return (t)
+
+def t_CLOSE_LISTITEM(t):
+    r'</listitem>'
+    archivo_html.write("</il>")
+    return (t)
+
+
+def t_OPEN_IMPORTANT(t):
+    r'<important>'
+    archivo_html.write('<div style="background-color:red;color:white">') #anda bien
+    return(t)
+
+
+def t_CLOSE_IMPORTANT(t): 
+    r'</important>'
+    archivo_html.write('</div>')
+    return(t)
+
+def t_OPEN_ROW(t):
+    r'<row>'
+    archivo_html.write("<tr>")
+    return (t)
+def t_CLOSE_ROW(t):
+    r'</row>'
+    archivo_html.write("</tr>")
+    return (t)
+
+
+def t_OPEN_ENTRY(t): 
+    r'<entry>'
+    archivo_html.write("<td>")
+    return (t)
+
+
+def t_CLOSE_ENTRY(t): 
+    r'</entry>'
+    archivo_html.write("</td>")
+    return (t)
+
+
 t_OPEN_MEDIAOBJECT = r'<mediaobject>'
 t_CLOSE_MEDIAOBJECT = r'</mediaobject>'
 t_OPEN_FIRSTNAME = r'<firstname>'
@@ -143,16 +196,36 @@ t_CLOSE_HOLDER = r'</holder>'
 t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
 t_CLOSE_LINK = r'</link>'
-t_OPEN_INFORMALTABLE = r'<informaltable>'
-t_CLOSE_INFORMALTABLE = r'</informaltable>'
+
+def t_OPEN_INFORMALTABLE(t):
+    r'<informaltable>'
+    archivo_html.write("<table>")
+    return (t)
+
+def t_CLOSE_INFORMALTABLE(t):
+    r'</informaltable>'
+    archivo_html.write("</table>")
+    return (t)
+
 t_OPEN_COMMENT = r'<comment>'
 t_CLOSE_COMMENT = r'</comment>'
 t_OPEN_SIMPLESEC = r'<simplesec>'
 t_CLOSE_SIMPLESEC = r'</simplesec>'
 t_OPEN_SIMPARA = r'<simpara>'
 t_CLOSE_SIMPARA = r'</simpara>'
-t_OPEN_INFO = r'<info>'
-t_CLOSE_INFO = r'</info>'
+
+def t_OPEN_INFO(t):
+    r'<info>'
+    archivo_html.write('<div style="color:white;background-color:green;font-size:8pts">')   #anda bien
+    return (t)
+
+def t_CLOSE_INFO(t):
+    r'</info>'
+    archivo_html.write('</div>')
+    return (t)
+
+
+
 t_TEXT = r'[^<>!/]+'
 t_OPEN_IMAGENOBJECT = r'<imageobject>'
 t_CLOSE_IMAGENOBJECT = r'</imageobject>'
@@ -166,13 +239,12 @@ t_OPEN_TFOOT = r'<tfoot>'
 t_CLOSE_TFOOT = r'</tfoot>'
 t_OPEN_ENTRYTBL = r'<entrytbl>'
 t_CLOSE_ENTRYTBL = r'</entrytbl>'
+t_OPEN_TBODY = r'<tbody>'
+t_CLOSE_TBODY = r'</tbody>'
 t_OPEN_CITY = r'<city>'
 t_CLOSE_CITY = r'</city>'
 t_OPEN_STATE = r'<state>'
 t_CLOSE_STATE = r'</state>'
-t_OPEN_TBODY = r'<tbody>'
-t_CLOSE_TBODY = r'</tbody>'
-
 
 def t_VIDEODATA(t):
     t.value = t.lexer.lexmatch.group('URL')
@@ -242,4 +314,3 @@ while True:
         break
     print(token)
 """
-archivo_html.close()
