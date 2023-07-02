@@ -13,9 +13,11 @@ archivo_html = open("html.txt", "w")
 # reglas Gramaticales
 
 def p_document(p):
-    '''document : doctype article'''
-def doctype(p):
-    'doctype : DOCTYPE_ARTICLE'  
+    '''document : doctype OPEN_ARTICLE article CLOSE_ARTICLE'''
+def p_doctype(p):
+    '''
+        doctype : DOCTYPE_ARTICLE
+    '''  
 def p_article(p):
     '''
         article : OPEN_INFO info CLOSE_INFO article1
@@ -24,7 +26,7 @@ def p_article(p):
 
 def p_article1(p):
     '''
-        article1 :  OPEN_TITLE title ClOSE_TITLE article2
+        article1 :  OPEN_TITLE title CLOSE_TITLE article2
         article1 :  article2
     '''
 def p_article2(p):
@@ -74,8 +76,8 @@ def p_article3section(p):
     '''
 def p_article3simsection(p):
     '''
-    article3simsection: OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT article3simsection
-    | OPEN_SIMPLESECT simplesect CLOSE_SIMPLESECT
+    article3simsection  : OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC article3simsection
+    | OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC
     '''
 
 def p_section(p):
@@ -87,7 +89,7 @@ def p_section(p):
 
 def p_section1(p):
     '''
-        section1 :  OPEN_TITLE title ClOSE_TITLE section2
+        section1 :  OPEN_TITLE title CLOSE_TITLE section2
             |   section2
     '''
 
@@ -139,7 +141,7 @@ def p_section3section(p):
 
 def p_section3simsection(p):
     '''
-    section3simsection: OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
+    section3simsection  : OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC section3simsection
         | OPEN_SIMPLESEC simplesec CLOSE_SIMPLESEC
     '''
 
@@ -152,7 +154,7 @@ def p_simplesec(p):
 
 def p_simplesec1(p):
     '''
-        simplesec1 :  OPEN_TITLE title ClOSE_TITLE simplesec2
+        simplesec1 :  OPEN_TITLE title CLOSE_TITLE simplesec2
             |   simplesec2
     '''
 
@@ -235,7 +237,9 @@ def p_address(p):
             |   empty
     '''
 
-
+def p_empty(p):
+    'empty :'
+    pass
 
 def p_copyright(p):
     '''
@@ -262,7 +266,7 @@ def p_title(p):
             |   OPEN_EMAIL email CLOSE_EMAIL
 
     '''
-    
+
 def p_simpara(p):
     '''
     simpara : text simpara
@@ -327,7 +331,7 @@ def p_comment(p):
             |   OPEN_EMAIL email CLOSE_EMAIL 
             |   OPEN_AUTHOR author CLOSE_AUTHOR  
     '''
-def para(p):
+def p_para(p):
     '''
             para : text para
             |   OPEN_EMPHASIS emphasis CLOSE_EMPHASIS para
@@ -498,10 +502,7 @@ def p_holder(p):
             |   OPEN_COMMENT comment CLOSE_COMMENT
     '''
 
-def p_link(p):
-    '''
-    link : OPEN_LINK TEXT CLOSE_LINK
-    '''
+
 def p_mediaobject(p):
      '''
         mediaobject : OPEN_INFO info CLOSE_INFO mediadata
@@ -524,12 +525,12 @@ def p_mediadata2(p):
 
 def p_videoobject(p):
     '''
-        videoobject : OPEN_INFO INFO CLOSE_INFO videoobject2
+        videoobject : OPEN_INFO info CLOSE_INFO videoobject2
             |   videoobject2
     '''
 def p_imageobject(p):
     '''
-        imageobject : OPEN_INFO INFO CLOSE_INFO imageobject2
+        imageobject : OPEN_INFO info CLOSE_INFO imageobject2
             |   imageobject2
     '''
 def p_videoobject2(p):
@@ -542,7 +543,7 @@ def p_imageobject2(p):
     '''
 def p_informaltable(p):
     """
-    informaltable :tableobject
+    informaltable : tableobject
         | tablegroup
     """
 
@@ -579,20 +580,20 @@ def p_tgroup2(p):
 def p_thead(p):
     '''
     thead : OPEN_ROW row CLOSE_ROW thead
-        |OPEN_ROW row CLOSE_ROW
+        |   OPEN_ROW row CLOSE_ROW
     '''
 
 def p_tfoot(p):
     '''
     tfoot : OPEN_ROW row CLOSE_ROW tfoot
-        |OPEN_ROW row CLOSE_ROW
+        |   OPEN_ROW row CLOSE_ROW
     '''
 
 
 def p_tbody(p):
     '''
     tbody : OPEN_ROW row CLOSE_ROW tbody
-        |OPEN_ROW row CLOSE_ROW
+        |   OPEN_ROW row CLOSE_ROW
     '''
 
 def p_row(p):
@@ -603,28 +604,28 @@ def p_row(p):
         | OPEN_ENTRYTBL entrytbl CLOSE_ENTRYTBL
     '''
 
-def p_entrybl(p):
+def p_entrytbl(p):
     '''
     entrytbl : OPEN_THEAD thead CLOSE_THEAD entrytbl1
         | entrytbl1
     '''
-def p_entrybl1(p):
+def p_entrytbl1(p):
     '''
-    entrybl1 : OPEN_TBODY tbody CLOSE_TBODY
+    entrytbl1 : OPEN_TBODY tbody CLOSE_TBODY
     '''
 
 def p_entry(p):
      '''
         entry : text entry
-            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST entry
+            | OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST entry
             | OPEN_IMPORTANT important CLOSE_IMPORTANT entry
             | OPEN_PARA para CLOSE_PARA entry
-            | OPEN_SIMPARA simpara CLOSE_SIMPARAENTRY
+            | OPEN_SIMPARA simpara CLOSE_SIMPARA entry
             | OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT entry
             | OPEN_COMMENT comment CLOSE_COMMENT entry
             | OPEN_ABSTRACT abstract CLOSE_ABSTRACT entry
             | text
-            | OPEN_ITEMIZEDLIST itemizedList CLOSE_ITEMIZEDLIST 
+            | OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
             | OPEN_IMPORTANT important CLOSE_IMPORTANT 
             | OPEN_PARA para CLOSE_PARA 
             | OPEN_SIMPARA simpara CLOSE_SIMPARA
@@ -664,6 +665,15 @@ def p_text(p):
     '''
         text : TEXT
     '''
+
+#ERRORES
+def p_error(p):
+    if p:
+        print("Error de sintaxis en el token '%s'" % p.value)
+    else:
+        print("Error de sintaxis en la entrada")
+
+#EJECUTAR EL ARCHIVO
 
 def abrir_archivo():
     archivo = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
@@ -711,9 +721,9 @@ def mostrar_ventana_entrada():
 
         if error:
             # Debes especificar en qué parte hay un error
-            etiqueta = tk.Label(ventana, text="La secuencia ingresada tiene un error en reconocer los tokens ")
+            etiqueta = tk.Label(ventana_entrada, text="La secuencia ingresada tiene un error en reconocer los tokens ")
         else:
-            etiqueta = tk.Label(ventana, text="La secuencia ingresada cargo correctamente los tokens ")
+            etiqueta = tk.Label(ventana_entrada, text="La secuencia ingresada cargo correctamente los tokens ")
         etiqueta.pack()
 
         parser = yacc.yacc()
@@ -728,6 +738,9 @@ def mostrar_ventana_entrada():
     
     entrada_texto = tk.Entry(ventana_entrada)
     entrada_texto.pack()
+
+    boton_ejecutar = tk.Button(ventana_entrada, text="Ejecutar", state=tk.NORMAL, command=ejecutar_parser)
+    boton_ejecutar.pack()
     
     boton_salir_entrada = tk.Button(ventana_entrada, text="Salir", command=ventana_entrada.destroy)
     boton_salir_entrada.pack()
