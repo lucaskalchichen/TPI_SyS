@@ -48,15 +48,15 @@ def p_close_titlearticle(p):
 
 def p_article2(p):
     '''
-        article2 : article2 OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
-            |   article2 OPEN_IMPORTANT important CLOSE_IMPORTANT 
-            |   article2 OPEN_PARA para CLOSE_PARA 
-            |   article2 OPEN_SIMPARA simpara CLOSE_SIMPARA 
-            |   article2 OPEN_ADDRESS address CLOSE_ADDRESS 
-            |   article2 OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
-            |   article2 OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
-            |   article2 OPEN_COMMENT comment CLOSE_COMMENT 
-            |   article2 OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+        article2 : article2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
+            |   article2R OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   article2R OPEN_PARA para CLOSE_PARA 
+            |   article2R OPEN_SIMPARA simpara CLOSE_SIMPARA 
+            |   article2R OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   article2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   article2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+            |   article2R OPEN_COMMENT comment CLOSE_COMMENT 
+            |   article2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
             |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
@@ -84,8 +84,47 @@ def p_article2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3simsection
             |   OPEN_COMMENT comment CLOSE_COMMENT article3simsection
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3simsection
+            |   article2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3section
+            |   article2R OPEN_IMPORTANT important CLOSE_IMPORTANT article3section
+            |   article2R OPEN_PARA para CLOSE_PARA article3section
+            |   article2R OPEN_SIMPARA simpara CLOSE_SIMPARA article3section
+            |   article2R OPEN_ADDRESS address CLOSE_ADDRESS article3section
+            |   article2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3section
+            |   article2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3section
+            |   article2R OPEN_COMMENT comment CLOSE_COMMENT article3section
+            |   article2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3section
+            |   article2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST article3simsection
+            |   article2R OPEN_IMPORTANT important CLOSE_IMPORTANT article3simsection
+            |   article2R OPEN_PARA para CLOSE_PARA article3simsection
+            |   article2R OPEN_SIMPARA simpara CLOSE_SIMPARA article3simsection
+            |   article2R OPEN_ADDRESS address CLOSE_ADDRESS article3simsection
+            |   article2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT article3simsection
+            |   article2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE article3simsection
+            |   article2R OPEN_COMMENT comment CLOSE_COMMENT article3simsection
+            |   article2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT article3simsection
     '''
-    
+
+def p_article2R(p):
+    '''
+        article2R : article2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
+            |   article2R OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   article2R OPEN_PARA para CLOSE_PARA 
+            |   article2R OPEN_SIMPARA simpara CLOSE_SIMPARA 
+            |   article2R OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   article2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   article2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+            |   article2R OPEN_COMMENT comment CLOSE_COMMENT 
+            |   article2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT
+            |   OPEN_PARA para CLOSE_PARA
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
+    '''
+
 
 def p_article3section(p):
     '''
@@ -127,15 +166,15 @@ def p_close_titleSS(p):
 
 def p_section2(p):
     '''
-        section2 : section2 OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
-            |   section2 OPEN_IMPORTANT important CLOSE_IMPORTANT 
-            |   section2 OPEN_PARA para CLOSE_PARA 
-            |   section2 OPEN_SIMPARA simpara CLOSE_SIMPARA 
-            |   section2 OPEN_ADDRESS address CLOSE_ADDRESS 
-            |   section2 OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
-            |   section2 OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
-            |   section2 OPEN_COMMENT comment CLOSE_COMMENT 
-            |   section2 OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
+        section2 : section2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
+            |   section2R OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   section2R OPEN_PARA para CLOSE_PARA 
+            |   section2R OPEN_SIMPARA simpara CLOSE_SIMPARA 
+            |   section2R OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   section2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   section2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+            |   section2R OPEN_COMMENT comment CLOSE_COMMENT 
+            |   section2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT 
             |   OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST
             |   OPEN_IMPORTANT important CLOSE_IMPORTANT
             |   OPEN_PARA para CLOSE_PARA
@@ -163,8 +202,45 @@ def p_section2(p):
             |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3simsection
             |   OPEN_COMMENT comment CLOSE_COMMENT section3simsection
             |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3simsection
+            |   section2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3section
+            |   section2R OPEN_IMPORTANT important CLOSE_IMPORTANT section3section
+            |   section2R OPEN_PARA para CLOSE_PARA section3section
+            |   section2R OPEN_SIMPARA simpara CLOSE_SIMPARA section3section
+            |   section2R OPEN_ADDRESS address CLOSE_ADDRESS section3section
+            |   section2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3section
+            |   section2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3section
+            |   section2R OPEN_COMMENT comment CLOSE_COMMENT section3section
+            |   section2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3section
+            |   section2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST section3simsection
+            |   section2R OPEN_IMPORTANT important CLOSE_IMPORTANT section3simsection
+            |   section2R OPEN_PARA para CLOSE_PARA section3simsection
+            |   section2R OPEN_SIMPARA simpara CLOSE_SIMPARA section3simsection
+            |   section2R OPEN_ADDRESS address CLOSE_ADDRESS section3simsection
+            |   section2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT section3simsection
+            |   section2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE section3simsection
+            |   section2R OPEN_COMMENT comment CLOSE_COMMENT section3simsection
+            |   section2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT section3simsection
     '''
-  
+def p_section2R(p):
+     '''
+        section2R : section2R OPEN_ITEMIZEDLIST itemizedlist CLOSE_ITEMIZEDLIST 
+            |   section2R OPEN_IMPORTANT important CLOSE_IMPORTANT 
+            |   section2R OPEN_PARA para CLOSE_PARA 
+            |   section2R OPEN_SIMPARA simpara CLOSE_SIMPARA 
+            |   section2R OPEN_ADDRESS address CLOSE_ADDRESS 
+            |   section2R OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT 
+            |   section2R OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE 
+            |   section2R OPEN_COMMENT comment CLOSE_COMMENT 
+            |   section2R OPEN_ABSTRACT abstract CLOSE_ABSTRACT
+            |   OPEN_IMPORTANT important CLOSE_IMPORTANT
+            |   OPEN_PARA para CLOSE_PARA
+            |   OPEN_SIMPARA simpara CLOSE_SIMPARA
+            |   OPEN_ADDRESS address CLOSE_ADDRESS
+            |   OPEN_MEDIAOBJECT mediaobject CLOSE_MEDIAOBJECT
+            |   OPEN_INFORMALTABLE informaltable CLOSE_INFORMALTABLE
+            |   OPEN_COMMENT comment CLOSE_COMMENT
+            |   OPEN_ABSTRACT abstract CLOSE_ABSTRACT
+    '''
         
 def p_section3section(p):
     '''
