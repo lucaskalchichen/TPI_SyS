@@ -1,10 +1,13 @@
 <!DOCTYPE article>
 <article>
-  <title>Página de Recetas Deliciosas</title>
+  <info>
   <author>
     <firstname>Juan</firstname>
     <surname>Pérez</surname>
   </author>
+  </info>
+  <title>Página de Recetas Deliciosas</title>
+  <section>
   <abstract>Descubre una variedad de recetas deliciosas para todos los gustos.</abstract>
   <date>1 de julio de 2023</date>
   <copyright>
@@ -16,7 +19,8 @@
     <phone>555-1234</phone>
     <email>contacto@recetasdeliciosas.com</email>
   </address>
-  <section>Recetas de Postres</section>
+  </section>
+  <section>Recetas de Postres
   <para>En esta sección, encontrarás una selección de recetas de postres irresistibles.</para>
   
   <itemizedlist>
@@ -41,3 +45,32 @@
   <info>Consulta nuestra categoría de recetas saludables para más opciones nutritivas.</info>
   <videoobject>Video paso a paso de la receta de tarta de manzana</videoobject>
 </article>
+
+
+
+
+
+<!DOCTYPE article>
+<article>
+  <info>
+  <author>
+    <firstname>Juan</firstname>
+    <surname>Pérez</surname>
+  </author>
+  </info>
+  <title>Página de Recetas Deliciosas</title>
+  <section>
+  <abstract>Descubre una variedad de recetas deliciosas para todos los gustos.</abstract>
+  <date>1 de julio de 2023</date>
+  <copyright>
+    <holder>Recetas Deliciosas S.A.</holder>
+    <year>2023</year>
+  </copyright>
+  <address>
+    <street>Calle Principal, 123</street>
+    <phone>555-1234</phone>
+    <email>contacto@recetasdeliciosas.com</email>
+  </address>
+  </section>
+</article>
+'''
