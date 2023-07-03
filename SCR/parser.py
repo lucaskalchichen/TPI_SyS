@@ -855,7 +855,7 @@ def cerrar_interfaz(event):
 
 # Crear la ventana principal
 ventana = tk.Tk()
-ventana.title("Interfaz con selección de archivo")
+ventana.title("Analizador Sintactico DOCBOOK")
 ventana.geometry("800x400")
 
 # Crear los elementos de la interfaz

@@ -1,4 +1,6 @@
-import argparse
+import tkinter as tk
+
+from tkinter import filedialog
 
 import ply.lex as lex
 
@@ -290,7 +292,103 @@ def t_error(t):
 	t.lexer.skip(1)
 
 # Crear el lexer
-
 archivo_html = open("HTML_Salida.html", "w")
 
 lexer = lex.lex()
+
+def open_file():
+    selected_file = filedialog.askopenfilename(filetypes=(("Archivos de texto", "*.txt"), ("Todos los archivos", "*.*")))
+    label = tk.Label(window, text="Archivo seleccionado: " + selected_file)
+    label.pack()
+    
+    def run_lexer():
+        with open(selected_file, 'r') as file:
+            data = file.read()
+        lexer.input(data)
+        error = False
+
+        while True:
+            token = lexer.token()
+            print(token)
+            if token is None:
+                break
+            elif token.value == "true":
+                error = True
+
+        if error:
+            label = tk.Label(window, text="El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
+        else:
+            label = tk.Label(window, text="¡Lenguaje escrito correctamente!")
+        label.pack()
+
+    execute_button = tk.Button(window, text="Ejecutar", state=tk.NORMAL, command=run_lexer)
+    execute_button.pack()
+
+def show_input_window():
+    def run_lexer():
+        data = input_text.get()
+        lexer.input(data)
+        error = False
+
+        while True:
+            token = lexer.token()
+            print(token)
+            if token is None:
+                break
+            elif token.value == "true":
+                error = True
+
+        if error:
+            label = tk.Label(input_window, text="El lenguaje tiene un error en...")  # Debes especificar en qué parte hay un error
+        else:
+            label = tk.Label(input_window, text="¡Lenguaje escrito correctamente!")
+        label.pack()
+        
+
+    input_window = tk.Toplevel(window)
+    input_window.title("Ventana de Entrada")
+    input_window.geometry("800x400")
+    
+    input_label = tk.Label(input_window, text="Ingrese un texto")
+    input_label.pack()
+    
+    input_text = tk.Entry(input_window)
+    input_text.pack()
+
+    execute_button = tk.Button(input_window, text="Ejecutar", state=tk.NORMAL, command=run_lexer)
+    execute_button.pack()
+    
+    exit_button = tk.Button(input_window, text="Salir", command=input_window.destroy)
+    exit_button.pack()
+
+def close_interface(event):
+    if event.keysym == 'd' and event.state == 4:  # Comprueba si se presionó Control + D
+        window.quit()
+
+# Crear la ventana principal
+window = tk.Tk()
+window.title("Analizador Lexico DOCBOOK")
+window.geometry("800x400")
+
+# Crear los elementos de la interfaz
+label = tk.Label(window, text="Presiona el botón 'Archivo de Lectura' para seleccionar un archivo de lectura del parser.\nPresiona el botón 'Modo Interactivo' para ingresar el texto del deseas realizar la comprobacion sintatica.")
+label.pack()
+
+button1 = tk.Button(window, text="Archivo de Lectura", command=open_file)
+button1.pack()
+
+button2 = tk.Button(window, text="Modo Interactivo", command=show_input_window)
+button2.pack()
+
+exit_button = tk.Button(window, text="Salir", command=window.quit)
+exit_button.pack()
+
+# Vincular el cierre de la interfaz a la combinación de teclas Control + D
+window.bind('<Control-d>', close_interface)
+
+# Iniciar el bucle principal de la ventana
+window.mainloop()
+
+
+
+
