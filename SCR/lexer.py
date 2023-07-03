@@ -4,6 +4,7 @@ from tkinter import filedialog
 
 import ply.lex as lex
 
+import re
 
 # Lista de tokens
 tokens = (
@@ -209,8 +210,14 @@ t_OPEN_EMPHASIS = r'<emphasis>'
 t_CLOSE_EMPHASIS = r'</emphasis>'
 
 def t_OPEN_LINK(t):
-    r'<link\s+xlink:href\s*=\s*"[^"]*"\s*/?>'
-    archivo_html.write("<a>")
+    r'<link\s+xlink:href\s*=\s*"([^"]*)"\s*/?>' 
+    pattern = r'<link\s+xlink:href\s*=\s*"([^"]*)"\s*/?>'  # Patrón con expresión regular
+    match = re.search(pattern, t.value) 
+    if match:
+        url = match.group(1)  # Obtener el valor entre las comillas dobles
+    else:
+        url=''
+    archivo_html.write(f"<a href='{url}'>")
     return t
 
 
@@ -388,7 +395,6 @@ window.bind('<Control-d>', close_interface)
 
 # Iniciar el bucle principal de la ventana
 window.mainloop()
-
 
 
 
