@@ -1,1 +1,0 @@
-Article :=( Info?, (Title)?,((ItemizedList|Important|Para|SimPara|Address|MediaObject|InformalTable|Comment|Abstract|)+,(SimpleSect*|Section*))
