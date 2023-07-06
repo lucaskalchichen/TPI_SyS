@@ -1,0 +1,51 @@
+<!DOCTYPE article>
+<article>
+    <info>
+        <title>El titulo del articulo</title>
+        <author>
+            <firstname>Juan</firstname>
+            <surname>Perez</surname>
+        </author>
+    </info>
+
+    <mediaobject>
+        <imageobject><imagedata url="https://www.example.com/image.jpg" /></imageobject>
+        <videoobject><videodata url="https://www.example.com/video.mp4" /></videoobject>
+    </mediaobject>
+
+    <simplesec>
+        <info>
+            <address>
+                <phone>123-456-7890</phone>
+                <email>john@example.com</email>
+            </address>
+            <copyright>
+                <year>2023</year>
+                <holder>John Doe</holder>
+            </copyright>
+        </info>
+
+        <simpara>
+        <link xlink:href = "https://www.example.com/" >haga Click aqui</link>
+    
+        <author>
+            <firstname>John</firstname>
+            <surname>Doe</surname>
+        </author>    
+        <emphasis>This is emphasized text.</emphasis>
+        </simpara>
+    
+    
+    <informaltable>
+        <tgroup>
+            <tbody>
+                <row>
+                    <entry>Value 1</entry>
+                    <entry>Value 2</entry>
+                </row>
+            </tbody>
+        </tgroup>
+    </informaltable>
+   
+    </simplesec>
+</article>

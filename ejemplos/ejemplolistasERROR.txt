@@ -1,0 +1,66 @@
+<!DOCTYPE article>
+<article>
+    <title>Archivo de prueba sobre índices de muertos en la Segunda Guerra Mundial</title>
+<abstract>
+    <para>A continuación se presentan los índices de muertos en distintos países durante la Segunda Guerra Mundial, a modo de demostración.</para>
+</abstract>
+
+<informaltable>
+    <tgroup> 
+        <tbody>
+            <row> 
+                <entry>                
+                    <important>
+                        <title>PAÍS</title>
+                        <title>NÚMERO DE MUERTOS</title>
+                    </important>
+                </entry>
+            </row>
+            <row>
+                <entry> 
+                    <para>Unión Soviética</para>
+                    <para>27,000,000</para>
+                </entry>
+            </row>
+            <row>
+                <entry> 
+                    <para>Alemania</para>
+                    <para>5,533,000</para>
+                </entry>
+            </row>
+            <row>
+                <entry> 
+                    <para>Polonia</para>
+                    <para>5,620,000</para>
+                </entry>
+            </row>
+            <row>
+                <entry> 
+                    <para>China</para>
+                    <para>3,000,000</para>
+                </entry>
+            </row>
+            <row>
+                <entry> 
+                    <para>Japón</para>
+                    <para>2,830,000</para>
+                </entry>
+            </row>
+        </tbody>
+        <tfoot>
+            <row> 
+                <entry>
+                    <important>
+                        <title>TOTAL</title>
+                        <title>43,983,000</title>
+                    </important>
+                </entry>
+            </row>
+        </tfoot>
+    </tgroup>
+</informaltable>
+
+<section>
+    <para>Final del archivo de prueba sobre los índices de muertos en la Segunda Guerra Mundial.</para>
+</section>
+</article>

@@ -1,0 +1,16 @@
+<!DOCTYPE article> 
+<article>
+
+    <title>Ejemplo TPI</title>
+    <comment>Cualquier sugerencia de mejora es bienvenida</comment>
+
+    <section>
+        <title>
+               <link xlink:href = "https://www.example.com/" >Click aqui</link>
+        </title>
+        <para>Titulo seccion1</para>
+        <section>
+                <comment>Seccion de prueba</comment>
+         </section>
+    </section>
+</article>
